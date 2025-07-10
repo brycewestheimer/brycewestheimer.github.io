@@ -13,7 +13,7 @@ author:
   github: "brycewestheimer"
   linkedin: "bryce-westheimer"  # Update with your LinkedIn username
   google_scholar: "gnELDysAAAAJ"  # Your Google Scholar ID from the search
-  avatar: "/assets/profile_image.jpg"  # Add your professional photo here
+  avatar: "/assets/favicon.svg"  # Using favicon.svg as profile image
 
 # Site Settings
 layout: sidebar
