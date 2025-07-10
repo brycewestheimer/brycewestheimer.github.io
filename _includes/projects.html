@@ -36,27 +36,48 @@
   </div>
 
   <div class="projects-grid">
-    {% if site.projects.sort_by == 'stars' %}
-      {% assign sort_order = 'stargazers_count', 'last' %}
-    {% else %}
-      {% assign sort_order = 'pushed_at' %}
-    {% endif %}
+    {% if site.github.public_repositories %}
+      {% if site.projects.sort_by == 'stars' %}
+        {% assign sort_order = 'stargazers_count', 'last' %}
+      {% else %}
+        {% assign sort_order = 'pushed_at' %}
+      {% endif %}
 
-    {% if site.projects.exclude.archived and site.projects.exclude.forks %}
-      {% assign filtered_repos = site.github.public_repositories | where:'archived', false | where:'fork', false | sort: sort_order | reverse %}
-    {% elsif site.projects.exclude.archived %}
-      {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
-    {% elsif site.projects.exclude.forks %}
-      {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
-    {% else %}
-      {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
-    {% endif %}
+      {% if site.projects.exclude.archived and site.projects.exclude.forks %}
+        {% assign filtered_repos = site.github.public_repositories | where:'archived', false | where:'fork', false | sort: sort_order | reverse %}
+      {% elsif site.projects.exclude.archived %}
+        {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
+      {% elsif site.projects.exclude.forks %}
+        {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
+      {% else %}
+        {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
+      {% endif %}
 
-    {% for repository in filtered_repos | limit: site.projects.limit %}
-      {% unless site.projects.exclude.projects contains repository.name %}
-        {% include repo-card.html %}
-      {% endunless %}
-    {% endfor %}
+      {% for repository in filtered_repos | limit: site.projects.limit %}
+        {% unless site.projects.exclude.projects contains repository.name %}
+          {% include repo-card.html %}
+        {% endunless %}
+      {% endfor %}
+    {% else %}
+      <!-- Fallback when GitHub API is not available -->
+      <div class="project-card">
+        <div class="project-card__header">
+          <h3>GitHub Repositories</h3>
+          <span class="tech-tag">Available Online</span>
+        </div>
+        <div class="project-card__description">
+          <p>Visit my GitHub profile to view my open source contributions and research projects including quantum chemistry software development and computational tools.</p>
+        </div>
+        <div class="project-card__footer">
+          <div class="project-card__footer-left">
+            <span class="project-card__language">
+              <span class="repo-language-color" style="background-color: #3178c6;"></span>
+              Multiple Languages
+            </span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
   </div>
 
   <div class="text-center" style="margin-top: var(--spacing-xl);">

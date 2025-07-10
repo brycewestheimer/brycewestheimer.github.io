@@ -194,7 +194,7 @@ Some tutorials include video walkthroughs and explanations. Check the individual
 ### Getting Help
 - **GitHub Issues**: Report problems or ask questions about tutorial content
 - **Discussion Forum**: Community discussion and peer support
-- **Email Support**: Direct questions to [bryce.westheimer@gmail.com](mailto:bryce.westheimer@gmail.com)
+- **Email Support**: Direct questions to [westheb@gmail.com](mailto:westheb@gmail.com)
 
 ### Contributing
 I welcome contributions to improve these tutorials:

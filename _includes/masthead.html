@@ -1,12 +1,14 @@
 <div class="profile">
-  <img src="{{ user.avatar_url }}" class="profile__avatar" alt="{{ user.name }} - {{ user.bio }}">
+  <img src="{% if user.avatar_url %}{{ user.avatar_url }}{% elsif site.author.avatar %}{{ site.author.avatar | relative_url }}{% else %}{{ '/assets/favicon.svg' | relative_url }}{% endif %}" class="profile__avatar" alt="{% if user.name %}{{ user.name }}{% else %}Bryce Westheimer{% endif %} - Professional Photo" onerror="this.src='{{ '/assets/favicon.svg' | relative_url }}'">
   
   <h1 class="profile__name">
-    {% if user.name %}{{ user.name }}{% else %}{{ user.login }}{% endif %}
+    {% if user.name %}{{ user.name }}, PhD{% else %}{{ user.login }}{% endif %}
   </h1>
   
   <p class="profile__bio">
-    Computational chemistry researcher with expertise in quantum chemistry method development, high-performance computing, and scientific software engineering. Experienced in developing scalable algorithms for quantum mechanical calculations and transitioning cutting-edge research into industry applications.
+    Postdoctoral researcher specializing in <strong>quantum chemistry method development</strong> and <strong>high-performance computing</strong>. 
+    <br><br>
+    Expertise in developing scalable computational algorithms and transitioning cutting-edge research into practical industry solutions.
   </p>
 
   {% if include.metadata %}
@@ -14,8 +16,8 @@
       {% if user.name %}
         <div class="profile__meta-item">
           {% octicon mark-github height:16 class:"" fill:currentColor aria-label:GitHub %}
-          <a href="https://github.com/{{ user.login }}">
-            @{{ user.login }}
+          <a href="https://github.com/{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}">
+            @{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}
           </a>
         </div>
       {% endif %}

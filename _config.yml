@@ -9,10 +9,11 @@ author:
   name: "Bryce Westheimer"
   bio: "Quantum chemistry researcher developing scalable computational methods for industry applications"
   location: "Vancouver, WA (Remote)"
-  email: "bryce.westheimer@gmail.com"  # Update with your actual email
+  email: "westheb@gmail.com"  # Update with your actual email
   github: "brycewestheimer"
   linkedin: "bryce-westheimer"  # Update with your LinkedIn username
   google_scholar: "gnELDysAAAAJ"  # Your Google Scholar ID from the search
+  avatar: "/assets/profile.jpg"  # Add your professional photo here
 
 # Site Settings
 layout: sidebar
@@ -21,7 +22,7 @@ timezone: America/Los_Angeles
 
 plugins:
   - jekyll-octicons
-  - jekyll-github-metadata
+  # - jekyll-github-metadata  # Temporarily disabled for local testing
   - jemoji
   - jekyll-sitemap
   - jekyll-feed
@@ -80,7 +81,7 @@ social_media:
   linkedin: bryce-westheimer  # Update with your actual LinkedIn username
   github: brycewestheimer
   google_scholar: gnELDysAAAAJ
-  email: bryce.westheimer@gmail.com  # Update with your actual email
+  email: westheb@gmail.com  # Update with your actual email
   # Add other social media as needed
 
 # Research Topics & Expertise
