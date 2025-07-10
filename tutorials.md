@@ -8,16 +8,53 @@ permalink: /tutorials/
 ## Available Tutorials
 
 <div class="tutorial-grid">
-
-  <div class="tutorial-card">
-    <div class="tutorial-header">
-      <h3><a href="/tutorials/gpu-quantum-chemistry/">Getting Started with GPU-Accelerated Quantum Chemistry</a></h3>
-      <div class="tutorial-meta">
-        <span class="difficulty beginner">Beginner</span>
-        <span class="duration">45 min</span>
-        <span class="topic">GPU Computing</span>
+  {% for tutorial in site.tutorials %}
+    <div class="tutorial-card">
+      <div class="tutorial-header">
+        <h3><a href="{{ tutorial.url | relative_url }}">{{ tutorial.title }}</a></h3>
+        <div class="tutorial-meta">
+          {% if tutorial.difficulty %}
+            <span class="difficulty {{ tutorial.difficulty }}">{{ tutorial.difficulty | capitalize }}</span>
+          {% endif %}
+          {% if tutorial.duration %}
+            <span class="duration">{{ tutorial.duration }}</span>
+          {% endif %}
+          {% if tutorial.topics %}
+            {% for topic in tutorial.topics limit:1 %}
+              <span class="topic">{{ topic | replace: '-', ' ' | capitalize }}</span>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      
+      {% if tutorial.description %}
+        <div class="tutorial-description">
+          {{ tutorial.description }}
+        </div>
+      {% endif %}
+      
+      {% if tutorial.prerequisites %}
+        <div class="tutorial-prerequisites">
+          <strong>Prerequisites:</strong>
+          <ul>
+            {% for prereq in tutorial.prerequisites %}
+              <li>{{ prereq }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      
+      <div class="tutorial-footer">
+        <a href="{{ tutorial.url | relative_url }}" class="btn btn-primary">Start Tutorial</a>
+        {% if tutorial.date %}
+          <span class="tutorial-date">Updated {{ tutorial.date | date: "%B %Y" }}</span>
+        {% endif %}
       </div>
     </div>
+  {% endfor %}
+</div>
+
+## Tutorial Categories
     <p>Learn how to set up and run quantum chemistry calculations on GPU hardware. Covers installation, configuration, and basic optimization techniques.</p>
     <div class="tutorial-topics">
       <span class="topic-tag">CUDA</span>

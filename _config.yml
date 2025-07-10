@@ -29,6 +29,12 @@ plugins:
 
 permalink: /:year/:month/:day/:title/
 
+# Collections
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorials/:name/
+
 # SEO Settings
 lang: en_US
 twitter:
@@ -46,6 +52,13 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "post"
+      author: "Bryce Westheimer"
+      category: "tutorial"
 
 # Project Settings
 projects:

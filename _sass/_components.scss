@@ -467,92 +467,120 @@
 // Tutorial cards
 .tutorial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: var(--spacing-lg);
-  margin: var(--spacing-lg) 0;
+  margin-top: var(--spacing-lg);
 }
 
 .tutorial-card {
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-primary);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg);
   transition: all var(--transition);
-
+  
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary);
+    border-color: var(--color-primary-light);
   }
+}
 
-  .tutorial-header {
-    margin-bottom: var(--spacing-sm);
-
-    h3 {
-      margin: 0 0 var(--spacing-sm) 0;
-      font-size: 1.25rem;
-
-      a {
+.tutorial-header {
+  margin-bottom: var(--spacing-md);
+  
+  h3 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1.25rem;
+    
+    a {
+      color: var(--color-text-primary);
+      text-decoration: none;
+      
+      &:hover {
         color: var(--color-primary);
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .tutorial-meta {
-      display: flex;
-      gap: var(--spacing-sm);
-      flex-wrap: wrap;
-
-      .difficulty,
-      .duration,
-      .topic {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: calc(var(--border-radius) / 2);
-        font-size: 0.75rem;
-        font-weight: 500;
-      }
-
-      .difficulty {
-        &.beginner {
-          background: var(--color-success);
-          color: white;
-        }
-        &.intermediate {
-          background: var(--color-warning);
-          color: white;
-        }
-        &.advanced {
-          background: var(--color-error);
-          color: white;
-        }
-      }
-
-      .duration,
-      .topic {
-        background: var(--color-bg);
-        color: var(--color-text-secondary);
-        border: 1px solid var(--color-border);
       }
     }
   }
+}
 
-  .tutorial-topics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-xs);
-    margin-top: var(--spacing-sm);
-
-    .topic-tag {
-      background: var(--color-primary);
-      color: white;
-      padding: 2px var(--spacing-xs);
-      border-radius: calc(var(--border-radius) / 2);
-      font-size: 0.7rem;
+.tutorial-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  
+  .difficulty,
+  .duration,
+  .topic {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .difficulty {
+    &.beginner {
+      background-color: var(--color-success-bg);
+      color: var(--color-success);
     }
+    
+    &.intermediate {
+      background-color: var(--color-warning-bg);
+      color: var(--color-warning);
+    }
+    
+    &.advanced {
+      background-color: var(--color-danger-bg);
+      color: var(--color-danger);
+    }
+  }
+  
+  .duration {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+  }
+  
+  .topic {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+  }
+}
+
+.tutorial-description {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.tutorial-prerequisites {
+  margin-bottom: var(--spacing-md);
+  
+  ul {
+    margin: var(--spacing-xs) 0 0 0;
+    padding-left: var(--spacing-md);
+    
+    li {
+      margin-bottom: var(--spacing-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+    }
+  }
+}
+
+.tutorial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  
+  .tutorial-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
   }
 }
 
