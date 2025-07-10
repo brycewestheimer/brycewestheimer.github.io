@@ -1,27 +1,68 @@
-<h2 {% if site.style == 'dark' %}class="text-white"{% endif %}>My Projects</h2>
-<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">GitHub repositories that I've built.</p>
-<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
-  {% if site.projects.sort_by == 'stars' %}
-    {% assign sort_order = 'stargazers_count', 'last' %}
-  {% else %}
-    {% assign sort_order = 'pushed_at' %}
+<section class="section">
+  <div class="section__header">
+    <h2>Featured Projects</h2>
+    <p>Research and development projects showcasing computational chemistry and high-performance computing expertise.</p>
+  </div>
+
+  <!-- Featured upcoming projects -->
+  {% if site.featured_projects %}
+    <div class="projects-grid">
+      {% for project in site.featured_projects %}
+        <div class="project-card">
+          <div class="project-card__header">
+            <h3>{{ project.name }}</h3>
+            <span class="tech-tag">{{ project.status }}</span>
+          </div>
+          <div class="project-card__description">
+            <p>{{ project.description }}</p>
+          </div>
+          <div class="project-card__footer">
+            <div class="project-card__footer-left">
+              <span class="project-card__language">
+                <span class="repo-language-color" style="background-color: #89e051;"></span>
+                Quantum Chemistry
+              </span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   {% endif %}
 
-  {% if site.projects.exclude.archived && site.projects.exclude.forks %}
-    {% assign filtered_repos = site.github.public_repositories | where:'archived', false | where:'fork', false | sort: sort_order | reverse %}
-  {% elsif site.projects.exclude.archived %}
-    {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
-  {% elsif site.projects.exclude.forks %}
-    {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
-  {% else %}
-    {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
-  {% endif %}
+  <!-- GitHub repositories -->
+  <div class="section__header" style="margin-top: var(--spacing-3xl);">
+    <h3>Open Source Contributions</h3>
+    <p>Public repositories and contributions to the scientific computing community.</p>
+  </div>
 
-  {% for repository in filtered_repos | limit: site.projects.limit %}
-    {% unless site.projects.exclude.projects contains repository.name %}
-      <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
+  <div class="projects-grid">
+    {% if site.projects.sort_by == 'stars' %}
+      {% assign sort_order = 'stargazers_count', 'last' %}
+    {% else %}
+      {% assign sort_order = 'pushed_at' %}
+    {% endif %}
+
+    {% if site.projects.exclude.archived and site.projects.exclude.forks %}
+      {% assign filtered_repos = site.github.public_repositories | where:'archived', false | where:'fork', false | sort: sort_order | reverse %}
+    {% elsif site.projects.exclude.archived %}
+      {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
+    {% elsif site.projects.exclude.forks %}
+      {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
+    {% else %}
+      {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
+    {% endif %}
+
+    {% for repository in filtered_repos | limit: site.projects.limit %}
+      {% unless site.projects.exclude.projects contains repository.name %}
         {% include repo-card.html %}
-      </div>
-    {% endunless %}
-  {% endfor %}
-</div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+
+  <div class="text-center" style="margin-top: var(--spacing-xl);">
+    <a href="https://github.com/{{ site.author.github }}" class="btn btn--outline">
+      {% octicon mark-github height:16 %}
+      View All Repositories
+    </a>
+  </div>
+</section>

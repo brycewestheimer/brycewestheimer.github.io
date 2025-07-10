@@ -1,60 +1,142 @@
+# Site Configuration
+title: "Bryce Westheimer"
+description: "Postdoctoral Fellow specializing in quantum chemistry method development and high-performance computing applications"
+url: "https://brycewestheimer.github.io"
+baseurl: ""
+
+# Author Information
+author:
+  name: "Bryce Westheimer"
+  bio: "Quantum chemistry researcher developing scalable computational methods for industry applications"
+  location: "Vancouver, WA (Remote)"
+  email: "bryce.westheimer@gmail.com"  # Update with your actual email
+  github: "brycewestheimer"
+  linkedin: "bryce-westheimer"  # Update with your LinkedIn username
+  google_scholar: "gnELDysAAAAJ"  # Your Google Scholar ID from the search
+
+# Site Settings
 layout: sidebar
-style: light
+style: auto  # Matches system theme preference
+timezone: America/Los_Angeles
 
 plugins:
   - jekyll-octicons
   - jekyll-github-metadata
   - jemoji
+  - jekyll-sitemap
+  - jekyll-feed
 
 permalink: /:year/:month/:day/:title/
 
+# SEO Settings
+lang: en_US
+twitter:
+  card: summary_large_image
+
 defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
+  - scope:
+      path: ""
       type: "posts"
     values:
       layout: "post"
+      author: "Bryce Westheimer"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
 
+# Project Settings
 projects:
   sort_by: pushed
-  # sort_by options:
-  #   - pushed
-  #   - stars
   limit: 9
   exclude:
     archived: false
     forks: true
     projects:
-    # - repo-name
+      # Add any repos you want to exclude
 
-# social_media:
-  # behance: your_username
-  # dribbble: your_username
-  # facebook: your_username
-  # hackerrank: your_username
-  # instagram: your_username
-  # keybase: your_username
-  # linkedin: your_username
-  # mastodon: your_username
-  # medium: your_username
-  # stackoverflow: your_user_id
-  # telegram: your_username
-  # twitter: your_username
-  # unsplash: your_username
-  # vk: your_username
-  # website: http://your_website_url
-  # youtube: your_username
+# Navigation
+navigation:
+  - name: "Home"
+    url: "/"
+  - name: "About"
+    url: "/about/"
+  - name: "Research"
+    url: "/research/"
+  - name: "Projects"
+    url: "/projects/"
+  - name: "Publications"
+    url: "/publications/"
+  - name: "Blog"
+    url: "/blog/"
+  - name: "Tutorials"
+    url: "/tutorials/"
+  - name: "Contact"
+    url: "/contact/"
 
+# Social Media Configuration
+social_media:
+  linkedin: bryce-westheimer  # Update with your actual LinkedIn username
+  github: brycewestheimer
+  google_scholar: gnELDysAAAAJ
+  email: bryce.westheimer@gmail.com  # Update with your actual email
+  # Add other social media as needed
+
+# Research Topics & Expertise
 topics:
-  - name: Computational Chemistry
-  #  web_url: https://github.com/topics/css
-  #  image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/css/css.png
+  - name: "Quantum Chemistry Method Development"
+    description: "Ab initio fragmentation methods and scalable quantum chemistry algorithms"
+    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
+    image_url: "/assets/images/quantum-chemistry.svg"
+    
+  - name: "High-Performance Computing"
+    description: "Optimization of quantum chemistry software for novel computer architectures"
+    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
+    image_url: "/assets/images/hpc.svg"
+    
+  - name: "QM/MM Methods"
+    description: "Mixed quantum mechanics/molecular mechanics simulation techniques"
+    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
+    image_url: "/assets/images/qmmm.svg"
+    
+  - name: "Computational Chemistry Software"
+    description: "Development and optimization of scientific computing applications"
+    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
+    image_url: "/assets/images/software.svg"
 
-  - name: AI and Machine Learning
-  # web_url: TODO
-  # image_url: TODO
+# Skills & Technologies
+skills:
+  languages:
+    - "Fortran"
+    - "C/C++"
+    - "Python"
+    - "CUDA"
+    - "OpenMP"
+    - "MPI"
+  frameworks:
+    - "GAMESS"
+    - "NumPy/SciPy"
+    - "PyTorch/TensorFlow"
+    - "Jupyter"
+  tools:
+    - "Git"
+    - "CMake"
+    - "Docker"
+    - "SLURM"
+    - "Intel Compilers"
+    - "NVIDIA HPC SDK"
 
-  - name: High-performance Computing and Software Development
-  #  web_url: https://github.com/topics/sass
-  #  image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/sass/sass.png
+# Key Projects (upcoming)
+featured_projects:
+  - name: "PyFrag"
+    description: "Python-based fragmentation analysis toolkit"
+    status: "In Development"
+    
+  - name: "LibAccInt"
+    description: "Accurate integration library for quantum chemistry"
+    status: "In Development"
+    
+  - name: "MAP-QM/MM"
+    description: "Massively parallel QM/MM simulation framework"
+    status: "In Development"

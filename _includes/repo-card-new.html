@@ -20,11 +20,7 @@
     <div class="project-card__footer-left">
       {% if repository.language %}
         <div class="project-card__language">
-          {% if site.data.colors[repository.language] %}
-            <span class="repo-language-color" style="background-color:{{ site.data.colors[repository.language]['color'] }}"></span>
-          {% else %}
-            <span class="repo-language-color" style="background-color:#586069"></span>
-          {% endif %}
+          <span class="repo-language-color" style="background-color:{{ site.data.colors[repository.language]["color"] | default: '#586069' }}"></span>
           {{ repository.language }}
         </div>
       {% endif %}

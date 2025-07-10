@@ -1,33 +1,85 @@
-{% if site.style == 'dark' %}
-  {% assign icon_color = "#ffffff" %}
-{% else %}
-  {% assign icon_color = "#24292e" %}
-{% endif %}
-
-{% assign content = page.content %}
-
-{% assign posts_total = site.posts | size %}
-
 {% assign user = site.github.owner %}
+{% assign posts_total = site.posts | size %}
 
 {% if page.path contains '_posts' %}
   {% assign page_title = page.title %}
-  {% assign meta_description = page.content | strip_html | strip_newlines | xml_escape | truncate: 300 %}
+  {% assign meta_description = page.content | strip_html | strip_newlines | xml_escape | truncate: 160 %}
 {% else %}
   {% assign page_title = user.name %}
-  {% assign meta_description = user.bio | strip_html | strip_newlines | xml_escape | truncate: 300 %}
+  {% assign meta_description = site.description | strip_html | strip_newlines | xml_escape | truncate: 160 %}
 {% endif %}
 
 <!doctype html>
-<html class="min-height-full">
+<html lang="{{ site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
-    <title>{{ page_title }}</title>
-    <meta name="description" content="{{ meta_description }}" />
-    <meta property="og:title" content="{{ user.name }}" />
-    <meta property="og:image" content="{{ user.avatar_url }}" />
-    <meta property="og:description" content="{{ meta_description }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ "/assets/styles.css" | relative_url }}" rel="stylesheet" type="text/css">
+    
+    <!-- SEO Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="author" content="{{ site.author.name }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:image" content="{{ user.avatar_url }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta property="twitter:title" content="{{ page_title }}">
+    <meta property="twitter:description" content="{{ meta_description }}">
+    <meta property="twitter:image" content="{{ user.avatar_url }}">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0366d6">
+    <meta name="color-scheme" content="light dark">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://github.com">
+    
+    <!-- Styles -->
+    <link href="{{ '/assets/styles.css' | relative_url }}" rel="stylesheet" type="text/css">
+    
+    <!-- Favicon and icons -->
+    <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ '/assets/favicon.svg' | relative_url }}">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ site.author.name }}",
+      "url": "{{ site.url }}",
+      "description": "{{ site.description }}",
+      "jobTitle": "Postdoctoral Fellow",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Computational Chemistry Research"
+      },
+      "alumniOf": "PhD in Chemistry",
+      "knowsAbout": [
+        "Quantum Chemistry",
+        "High-Performance Computing", 
+        "Machine Learning",
+        "Software Development"
+      ],
+      "sameAs": [
+        "https://github.com/{{ site.social_media.github }}",
+        "https://linkedin.com/in/{{ site.social_media.linkedin }}",
+        "https://scholar.google.com/citations?user={{ site.social_media.google_scholar }}"
+      ]
+    }
+    </script>
+    
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
   </head>
-  <body class="bg-white min-height-full" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
+  <body>

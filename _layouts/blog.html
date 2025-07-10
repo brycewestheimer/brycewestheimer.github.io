@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<div class="blog-wrapper">
+  <div class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">{{ page.title | default: "Blog" }}</h1>
+      {% if page.description %}
+        <p class="blog-description">{{ page.description }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <div class="container">
+      <div class="blog-grid">
+        <main class="blog-main">
+          {{ content }}
+        </main>
+        
+        <aside class="blog-sidebar">
+          <div class="sidebar-section">
+            <h3>Recent Posts</h3>
+            <ul class="recent-posts">
+              {% for post in site.posts limit:5 %}
+                <li>
+                  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          
+          <div class="sidebar-section">
+            <h3>Categories</h3>
+            <div class="category-tags">
+              {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
+              {% for category in categories %}
+                {% unless category == '' %}
+                  <a href="/blog/category/{{ category | slugify }}/" class="category-tag">{{ category }}</a>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          </div>
+          
+          <div class="sidebar-section">
+            <h3>Tags</h3>
+            <div class="tag-cloud">
+              {% assign tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+              {% for tag in tags %}
+                {% unless tag == '' %}
+                  <a href="/blog/tag/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>

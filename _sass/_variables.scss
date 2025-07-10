@@ -1,0 +1,106 @@
+// Variables for consistent theming
+// Professional color scheme suitable for quantum chemistry/academic background
+
+:root {
+  // Primary colors - sophisticated blues and grays
+  --color-primary: #0366d6;
+  --color-primary-dark: #0056b3;
+  --color-primary-light: #2188ff;
+  --color-primary-rgb: 3, 102, 214;
+  --color-secondary: #6f42c1;
+  --color-accent: #28a745;
+  
+  // Status colors
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+  
+  // Neutral colors
+  --color-text: #24292e;
+  --color-text-secondary: #586069;
+  --color-text-tertiary: #6a737d;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f6f8fa;
+  --color-bg-tertiary: #fafbfc;
+  --color-border: #e1e4e8;
+  --color-border-light: #eaecef;
+  
+  // Dark theme colors
+  --color-bg-dark: #0d1117;
+  --color-bg-secondary-dark: #161b22;
+  --color-bg-tertiary-dark: #21262d;
+  --color-text-dark: #f0f6fc;
+  --color-text-secondary-dark: #8b949e;
+  --color-border-dark: #30363d;
+  
+  // Typography
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  
+  // Spacing scale
+  --spacing-xs: 0.25rem;   // 4px
+  --spacing-sm: 0.5rem;    // 8px
+  --spacing-md: 1rem;      // 16px
+  --spacing-lg: 1.5rem;    // 24px
+  --spacing-xl: 2rem;      // 32px
+  --spacing-2xl: 3rem;     // 48px
+  --spacing-3xl: 4rem;     // 64px
+  
+  // Border radius
+  --border-radius-sm: 3px;
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+  
+  // Shadows
+  --shadow-sm: 0 1px 0 rgba(27,31,35,0.04);
+  --shadow: 0 1px 3px rgba(27,31,35,0.12);
+  --shadow-md: 0 3px 6px rgba(27,31,35,0.15);
+  --shadow-lg: 0 8px 24px rgba(27,31,35,0.12);
+  
+  // Transitions
+  --transition-fast: 0.1s ease;
+  --transition: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  // Breakpoints
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+  
+  // Layout
+  --max-width: 1200px;
+}
+
+// Dark theme overrides
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: var(--color-text-dark);
+    --color-text-secondary: var(--color-text-secondary-dark);
+    --color-bg: var(--color-bg-dark);
+    --color-bg-secondary: var(--color-bg-secondary-dark);
+    --color-bg-tertiary: var(--color-bg-tertiary-dark);
+    --color-border: var(--color-border-dark);
+  }
+}
+
+// Theme class overrides for manual theme switching
+.theme-dark {
+  --color-text: var(--color-text-dark);
+  --color-text-secondary: var(--color-text-secondary-dark);
+  --color-bg: var(--color-bg-dark);
+  --color-bg-secondary: var(--color-bg-secondary-dark);
+  --color-bg-tertiary: var(--color-bg-tertiary-dark);
+  --color-border: var(--color-border-dark);
+}
+
+.theme-light {
+  --color-text: #24292e;
+  --color-text-secondary: #586069;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f6f8fa;
+  --color-bg-tertiary: #fafbfc;
+  --color-border: #e1e4e8;
+}

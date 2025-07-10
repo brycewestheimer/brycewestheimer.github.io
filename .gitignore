@@ -4,3 +4,10 @@
 _site/
 Gemfile.lock
 **/.ruby-version
+
+# Ignore copilot files
+.copilot/
+.vscode/
+.vscode-test/
+.idea/
+.github/

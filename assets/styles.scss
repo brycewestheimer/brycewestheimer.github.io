@@ -1,8 +1,11 @@
 ---
 ---
 @import url('https://unpkg.com/primer/build/build.css');
+@import 'variables';
+@import 'base';  
+@import 'components';
+@import 'layouts';
 @import 'highlight-syntax';
-
 
 // If a user adds a custom font, this component will stop it from bleeding into GitHub components:
 .github-component {

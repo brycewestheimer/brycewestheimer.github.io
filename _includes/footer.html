@@ -1,2 +1,26 @@
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__content">
+          <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}. Built with Jekyll and hosted on GitHub Pages.</p>
+          {% if site.social_media %}
+            <div class="social-links">
+              {% for account in site.social_media %}
+                {% assign service_shortname = account[0] %}
+                {% assign service = site.data.social_media[service_shortname] %}
+                {% if service %}
+                  <a href="{{ service.profile_url_prefix }}{{ account[1] }}" 
+                     class="social-links__link" 
+                     aria-label="{{ service.name }}: {{ account[1] }}"
+                     title="{{ service.name }}">
+                    {{ service.icon_svg }}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          <p><small>Last updated: {{ site.time | date: '%B %d, %Y' }}</small></p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

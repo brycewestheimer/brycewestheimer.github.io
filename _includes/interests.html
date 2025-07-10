@@ -1,9 +1,71 @@
-<h2 {% if site.style == 'dark' %}class="text-white"{% endif %}>My Interests</h2>
-<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Areas of expertise and ongoing research.</p>
-<div class="d-flex flex-wrap gutter-condensed mb-4">
-  {% for topic in site.topics %}
-    <div class="col-6 col-md-12 col-lg-6 col-xl-4 mb-3">
-      {% include topic-card.html %}
+<section class="section section--bg">
+  <div class="section__header">
+    <h2>Research Expertise</h2>
+    <p>Core areas of specialization in quantum chemistry, high-performance computing, and scientific software development.</p>
+  </div>
+
+  <div class="grid grid--2">
+    {% for topic in site.topics %}
+      <div class="card">
+        <div class="card__header">
+          <h3>{{ topic.name }}</h3>
+        </div>
+        <div class="card__content">
+          {% if topic.description %}
+            <p>{{ topic.description }}</p>
+          {% else %}
+            <p>Research and development in {{ topic.name | downcase }}.</p>
+          {% endif %}
+        </div>
+        {% if topic.web_url %}
+          <div class="card__footer">
+            <a href="{{ topic.web_url }}" class="btn btn--outline">View Publications</a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Skills Section -->
+  {% if site.skills %}
+    <div class="section__header" style="margin-top: var(--spacing-3xl);">
+      <h3>Technical Skills</h3>
+      <p>Programming languages, frameworks, and tools used in computational chemistry research and software development.</p>
     </div>
-  {% endfor %}
-</div>
+
+    <div class="skills-grid">
+      {% if site.skills.languages %}
+        <div class="skill-category">
+          <h4 class="skill-category__title">Programming Languages</h4>
+          <ul class="skill-category__list">
+            {% for skill in site.skills.languages %}
+              <li class="tech-tag">{{ skill }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if site.skills.frameworks %}
+        <div class="skill-category">
+          <h4 class="skill-category__title">Frameworks & Libraries</h4>
+          <ul class="skill-category__list">
+            {% for skill in site.skills.frameworks %}
+              <li class="tech-tag">{{ skill }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if site.skills.tools %}
+        <div class="skill-category">
+          <h4 class="skill-category__title">Tools & Technologies</h4>
+          <ul class="skill-category__list">
+            {% for skill in site.skills.tools %}
+              <li class="tech-tag">{{ skill }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
