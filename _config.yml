@@ -13,7 +13,7 @@ author:
   github: "brycewestheimer"
   linkedin: "bryce-westheimer"  # Update with your LinkedIn username
   google_scholar: "gnELDysAAAAJ"  # Your Google Scholar ID from the search
-  avatar: "/assets/profile.jpg"  # Add your professional photo here
+  avatar: "/assets/profile_image.jpg"  # Add your professional photo here
 
 # Site Settings
 layout: sidebar
@@ -22,7 +22,7 @@ timezone: America/Los_Angeles
 
 plugins:
   - jekyll-octicons
-  # - jekyll-github-metadata  # Temporarily disabled for local testing
+  # - jekyll-github-metadata  # Temporarily disabled due to repository access issues
   - jemoji
   - jekyll-sitemap
   - jekyll-feed

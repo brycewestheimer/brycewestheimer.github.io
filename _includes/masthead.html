@@ -2,7 +2,7 @@
   <img src="{% if user.avatar_url %}{{ user.avatar_url }}{% elsif site.author.avatar %}{{ site.author.avatar | relative_url }}{% else %}{{ '/assets/favicon.svg' | relative_url }}{% endif %}" class="profile__avatar" alt="{% if user.name %}{{ user.name }}{% else %}Bryce Westheimer{% endif %} - Professional Photo" onerror="this.src='{{ '/assets/favicon.svg' | relative_url }}'">
   
   <h1 class="profile__name">
-    {% if user.name %}{{ user.name }}, PhD{% else %}{{ user.login }}{% endif %}
+    {% if user.name %}{{ user.name }}, PhD{% elsif site.author.name %}{{ site.author.name }}, PhD{% else %}Bryce Westheimer, PhD{% endif %}
   </h1>
   
   <p class="profile__bio">
@@ -13,28 +13,26 @@
 
   {% if include.metadata %}
     <div class="profile__meta">
-      {% if user.name %}
-        <div class="profile__meta-item">
-          {% octicon mark-github height:16 class:"" fill:currentColor aria-label:GitHub %}
-          <a href="https://github.com/{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}">
-            @{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}
-          </a>
-        </div>
-      {% endif %}
+      <div class="profile__meta-item">
+        {% octicon mark-github height:16 class:"" fill:currentColor aria-label:GitHub %}
+        <a href="https://github.com/{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}">
+          @{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}
+        </a>
+      </div>
       
-      {% if user.email %}
+      {% if user.email or site.author.email %}
         <div class="profile__meta-item">
           {% octicon mail height:16 class:"" fill:currentColor aria-label:Email %}
-          <a href="mailto:{{ user.email }}">
-            {{ user.email }}
+          <a href="mailto:{% if user.email %}{{ user.email }}{% else %}{{ site.author.email }}{% endif %}">
+            {% if user.email %}{{ user.email }}{% else %}{{ site.author.email }}{% endif %}
           </a>
         </div>
       {% endif %}
       
-      {% if user.location %}
+      {% if user.location or site.author.location %}
         <div class="profile__meta-item">
           {% octicon location height:16 class:"" fill:currentColor aria-label:Location %}
-          {{ user.location }}
+          {% if user.location %}{{ user.location }}{% else %}{{ site.author.location }}{% endif %}
         </div>
       {% endif %}
       
