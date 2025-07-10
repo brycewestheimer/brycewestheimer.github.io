@@ -97,7 +97,7 @@ async function loadGitHubRepos() {
 
 function createRepoCard(repo) {
   const card = document.createElement('div');
-  card.className = 'repo-card';
+  card.className = 'project-card';
   
   card.innerHTML = `
     <div class="repo-header">

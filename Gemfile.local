@@ -1,9 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'jekyll', '~> 3.10.0'
-gem "jekyll-octicons"
-gem "jemoji"
-gem "jekyll-sitemap"
-gem "jekyll-feed"
-gem "webrick"
-gem "kramdown-parser-gfm"
