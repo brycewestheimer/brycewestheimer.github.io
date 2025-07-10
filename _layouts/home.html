@@ -6,7 +6,7 @@
   </div>
 
   <div class="sidebar-layout__content">
-    <div class="main-content">
+    <main id="main-content" class="main-content">
       {% unless content == "" %}
         <div class="section">
           {{ content }}
@@ -22,7 +22,7 @@
       {% unless posts_total == 0 %}
         {% include thoughts.html %}
       {% endunless %}
-    </div>
+    </main>
   </div>
 </div>
 

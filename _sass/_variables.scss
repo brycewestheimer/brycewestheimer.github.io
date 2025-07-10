@@ -29,6 +29,7 @@
   --color-text-muted: #6a737d;
   --color-bg: #ffffff;
   --color-bg-primary: #ffffff;
+  --color-bg-primary-rgb: 255, 255, 255;
   --color-bg-secondary: #f6f8fa;
   --color-bg-tertiary: #fafbfc;
   --color-border: #e1e4e8;
@@ -36,6 +37,8 @@
   
   // Dark theme colors
   --color-bg-dark: #0d1117;
+  --color-bg-primary-dark: #0d1117;
+  --color-bg-primary-dark-rgb: 13, 17, 23;
   --color-bg-secondary-dark: #161b22;
   --color-bg-tertiary-dark: #21262d;
   --color-text-dark: #f0f6fc;
@@ -102,6 +105,8 @@
   --color-text: var(--color-text-dark);
   --color-text-secondary: var(--color-text-secondary-dark);
   --color-bg: var(--color-bg-dark);
+  --color-bg-primary: var(--color-bg-primary-dark);
+  --color-bg-primary-rgb: var(--color-bg-primary-dark-rgb);
   --color-bg-secondary: var(--color-bg-secondary-dark);
   --color-bg-tertiary: var(--color-bg-tertiary-dark);
   --color-border: var(--color-border-dark);
