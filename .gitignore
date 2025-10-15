@@ -6,6 +6,7 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 Gemfile.lock
+vendor/
 **/.ruby-version
 _old_assets/
 
@@ -15,3 +16,4 @@ _old_assets/
 .vscode-test/
 .idea/
 .github/
+InstallationLog.txt
