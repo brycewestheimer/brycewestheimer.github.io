@@ -1,6 +1,6 @@
 # Bryce Westheimer — CV Snapshot (exported 2025-10-16)
 
-Curated for Milestone M1 to provide a quick reference while rewriting site copy. See cited sources for authoritative records.
+Curated to provide a quick reference while rewriting site copy. See cited sources for authoritative records.
 
 ## Contact & Profile
 
@@ -27,6 +27,10 @@ Curated for Milestone M1 to provide a quick reference while rewriting site copy.
 
 - Molecular Sciences Software Institute (MolSSI) Software Fellowship (2020 – 2021 cohort).[^molssi]
 - Klaus Ruedenberg Theoretical Chemistry Award, Iowa State University (graduate merit award).[^guidez-lab]
+- Witiak Graduate Research Fellowship, Iowa State University
+(graduate merit fellowship).
+- Alpha Chi Sigma Research Award, Iowa State University
+(graduate merit award).
 
 ## Select Presentations & Service
 
@@ -40,7 +44,7 @@ Curated for Milestone M1 to provide a quick reference while rewriting site copy.
 
 ## Additional Notes
 
-- Verified email: `westheb@gmail.com` (personal) and institutional alias via `ucdenver.edu` per Google Scholar profile.[^personal-site][^scholar-profile]
+- Verified email: `brycemwestheimer@gmail.com` (personal) and institutional alias via `ucdenver.edu` per Google Scholar profile.[^personal-site][^scholar-profile]
 - Resume / CV data compiled here to support Milestone M1. Keep synchronized with the Overleaf source prior to publication updates.
 
 ---

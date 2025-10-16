@@ -7,7 +7,7 @@ permalink: /about/
 
 ## Professional Background
 
-I'm a computational chemist focused on fragment-based *ab initio* methods and the high-performance computing software that makes them practical at scale. I currently split my time between quantum chemistry theory, GPU-ready implementations, and collaborative projects that translate academic advances into tools research labs can deploy.
+I'm a theoretical and computational chemist focused on fragment-based *ab initio* methods and the high-performance computing software that makes them practical at scale. I currently split my time between quantum chemistry theory, GPU-ready implementations, and collaborative projects that translate academic advances into tools research labs can deploy.
 
 ### Current Appointment
 
@@ -16,7 +16,7 @@ I'm a computational chemist focused on fragment-based *ab initio* methods and th
 ### Previous Experience
 
 - **Postdoctoral Research Associate, Ames National Laboratory (2022 – 2024)** — Advanced extreme-scale GAMESS development as part of DOE projects targeting heterogeneous supercomputing architectures.
-- **Graduate Research Assistant, Gordon Group · Iowa State University (2015 – 2022)** — Developed rigorous treatments of interfragment covalent bonds, scalable N-orthogonal MO expansions, and contributed to the GAMESS code base.
+- **Graduate Research Assistant, Gordon Group · Iowa State University (2015 – 2022)** — Developed rigorous treatments of interfragment covalent bonds, scalable Non-orthogonal MO expansions, and contributed to various extensions of the GAMESS code base.
 - **Undergraduate Researcher, Prody Lab · Western Washington University (2014 – 2015)** — Built computational pipelines for structural biology and spectroscopy projects while completing the chemistry curriculum.
 
 ### Education
@@ -35,8 +35,11 @@ I'm a computational chemist focused on fragment-based *ab initio* methods and th
 
 ### Recognition & Fellowships
 
-- Molecular Sciences Software Institute (MolSSI) Software Fellow, 2020–2021 cohort.
+- Molecular Sciences Software Institute (MolSSI) Software Investment Fellow, 2020–2021 cohort.
 - Klaus Ruedenberg Theoretical Chemistry Award, Iowa State University.
+- Witiak Graduate Fellowship, Iowa State University.
+- Alpha Chi Sigma Research Award, Iowa State University.
+- Research and Creative Opportunities Award, Western Washington University.
 
 ### Presentations & Community Engagement
 

@@ -61,7 +61,7 @@ Curated notes of authoritative references supporting the personal site refresh. 
 
 ## Contact and social channels
 
-- **Direct email:** `westheb@gmail.com` listed on the personal site alongside Vancouver, WA location details.
+- **Direct email:** `brycemwestheimer@gmail.com` listed on the personal site alongside Vancouver, WA location details.
 - **Professional networking:** Personal site links to LinkedIn profile `linkedin.com/in/bryce-westheimer` for outreach.
 - **Scholarly presence:** Google Scholar profile (`gnELDysAAAAJ`) notes a verified `ucdenver.edu` institutional email and points back to the personal homepage.
 - **Location:** Homepage contact card lists Vancouver, Washington, USA as the current base of operations.
