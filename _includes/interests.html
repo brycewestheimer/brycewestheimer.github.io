@@ -6,6 +6,14 @@
 
   <div class="grid grid--2">
     {% for topic in site.topics %}
+      {% assign topic_url = topic.web_url %}
+      {% if topic_url %}
+        {% if topic_url contains '://' %}
+          {% assign topic_href = topic_url %}
+        {% else %}
+          {% assign topic_href = topic_url | relative_url %}
+        {% endif %}
+      {% endif %}
       <div class="card">
         <div class="card__header">
           <h3>{{ topic.name }}</h3>
@@ -17,9 +25,11 @@
             <p>Research and development in {{ topic.name | downcase }}.</p>
           {% endif %}
         </div>
-        {% if topic.web_url %}
+        {% if topic_href %}
           <div class="card__footer">
-            <a href="{{ topic.web_url }}" class="btn btn--outline">View Publications</a>
+            <a href="{{ topic_href }}" class="btn btn--outline">
+              {{ topic.link_label | default: 'Learn more' }}
+            </a>
           </div>
         {% endif %}
       </div>

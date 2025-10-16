@@ -47,9 +47,27 @@ This page captures peer-reviewed work focused on fragment-based quantum chemistr
 - **Vaibhav Sundriyal, Masha Sosonkina, Bryce M. Westheimer, Mark S. Gordon.** “Comparisons of Core and Uncore Frequency Scaling Modes in Quantum Chemistry Application GAMESS.” In *2018 Spring Simulation Conference (HPC Track)*, Article 13:1–13:11. DOI: [10.1145/3200947.3200949](https://doi.org/10.1145/3200947.3200949).  
   *Focus*: Evaluates how frequency scaling choices impact the GAMESS workload mix, guiding energy-efficient deployments on large-scale clusters.
 
+## Invited talks & posters
+
+- **ACS Fall 2024, PHYS Division (San Francisco).** “Subsystem-local resolution of the identity: Novel methods for exchange repulsion effects in intermolecular interaction methods.” Talk delivered 21 Aug 2024.  
+  [Session details](https://acs.digitellinc.com/p/s/subsystem-local-resolution-of-the-identity-novel-methods-for-exchange-repulsion-effects-in-intermolecular-interaction-methods-610329)
+- **ACS Fall 2024 Symposium Presider.** Co-chaired “Addressing the Complexity of Correlated Quantum Many-Body Problems by Embedding & Downfolding.”  
+  [Session details](https://acs.digitellinc.com/p/s/addressing-the-complexity-of-correlated-quantum-many-body-problems-by-embedding-and-downfolding-610336)
+
+## Fellowships & recognition
+
+- **Molecular Sciences Software Institute (MolSSI) Software Fellow (2020–2021).** Supported development of high-performance fragment-based quantum chemistry software.  
+  [MolSSI profile](https://molssi.org/fellows/bryce-m-westheimer/)
+- **Klaus Ruedenberg Theoretical Chemistry Award.** Iowa State University graduate recognition for contributions to fragment-based theory.  
+  [CU Denver Guidez Lab profile](https://clas.ucdenver.edu/emilie-guidez-lab/bryce-westheimer)
+
 ## Staying current
 
 Publication metadata last refreshed from Crossref and dblp on 17 Oct 2025. If a PDF or preprint is needed, please reach out via the [contact page](/contact/).
+
+### CV access
+
+An up-to-date CV is available on request. Send a note through the contact form and a PDF copy will follow.
 
 ---
 

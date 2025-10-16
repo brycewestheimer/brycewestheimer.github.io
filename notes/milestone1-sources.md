@@ -64,8 +64,28 @@ Curated notes of authoritative references supporting the personal site refresh. 
 - **Direct email:** `westheb@gmail.com` listed on the personal site alongside Vancouver, WA location details.
 - **Professional networking:** Personal site links to LinkedIn profile `linkedin.com/in/bryce-westheimer` for outreach.
 - **Scholarly presence:** Google Scholar profile (`gnELDysAAAAJ`) notes a verified `ucdenver.edu` institutional email and points back to the personal homepage.
+- **Location:** Homepage contact card lists Vancouver, Washington, USA as the current base of operations.
 
 **Citation:** Bryce Westheimer – personal site contact section. <https://brycewestheimer.github.io/>; Google Scholar – author profile `gnELDysAAAAJ`. <https://scholar.google.com/citations?user=gnELDysAAAAJ&hl=en>
+
+## Résumé and employment timeline (updated 2025-10-16)
+
+- **CV snapshot:** Consolidated résumé details captured in [`notes/bryce-westheimer-cv-snapshot.md`](bryce-westheimer-cv-snapshot.md), built from RocketReach employment/education data and CU Denver lab profiles for cross-checking.
+- **Current role (2024–present):** Postdoctoral Fellow, University of Colorado Denver – co-advised by Professors Emilie Guidez and Hai Lin; scope includes multilayer adaptive partitioning and accelerator-ready electronic structure software. <https://clas.ucdenver.edu/emilie-guidez-lab/bryce-westheimer>
+- **Recent roles:** Postdoctoral Research Associate, Ames National Laboratory (2022–2024); Graduate Research Assistant, Iowa State University (2015–2022); undergraduate research assistant in the Prody Lab at Western Washington University (2014–2015). <https://rocketreach.co/bryce-westheimer-email_109519517>
+
+## Education timeline (complete)
+
+- **Ph.D., Physical Chemistry (2022), Iowa State University** – Dissertation *Developments in fragment-based quantum chemistry: Flattening the curve* under Prof. Mark S. Gordon. <https://dr.lib.iastate.edu/entities/publication/82c037e8-ba84-4ba6-abc8-ea1c2e4a1ab5>
+- **B.S., Chemistry (2015), Western Washington University**. <https://rocketreach.co/bryce-westheimer-email_109519517>
+- **A.S., Chemistry (2012), Clark College**. <https://rocketreach.co/bryce-westheimer-email_109519517>
+
+## Awards, talks, and professional service
+
+- **Fellowships & honors:** MolSSI Software Fellowship (2020–2021) and Klaus Ruedenberg Theoretical Chemistry Award noted by CU Denver Guidez Lab profile. <https://molssi.org/fellows/bryce-m-westheimer/> <https://clas.ucdenver.edu/emilie-guidez-lab/bryce-westheimer>
+- **Conference presentations:** ACS Fall 2024 talk “Subsystem-local resolution of the identity: Novel methods for exchange repulsion effects in intermolecular interaction methods.” <https://acs.digitellinc.com/p/s/subsystem-local-resolution-of-the-identity-novel-methods-for-exchange-repulsion-effects-in-intermolecular-interaction-methods-610329>
+- **Session leadership:** Presider for ACS Fall 2024 symposium “Addressing the Complexity of Correlated Quantum Many-Body Problems by Embedding & Downfolding.” <https://acs.digitellinc.com/p/s/addressing-the-complexity-of-correlated-quantum-many-body-problems-by-embedding-and-downfolding-610336>
+- **Group-recorded outreach:** Hai Lin group records 1 talk and 1 poster delivered during 2024 residency. <https://clas.ucdenver.edu/hai-lin/bryce-westheimer>
 
 ## Publications (verified)
 

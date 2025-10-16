@@ -7,62 +7,49 @@ permalink: /about/
 
 ## Professional Background
 
-I am a postdoctoral fellow with expertise in quantum chemistry method development and high-performance computing applications. My research focuses on developing scalable computational methods that can be applied to real-world industry challenges in computational chemistry.
+I'm a computational chemist focused on fragment-based *ab initio* methods and the high-performance computing software that makes them practical at scale. I currently split my time between quantum chemistry theory, GPU-ready implementations, and collaborative projects that translate academic advances into tools research labs can deploy.
 
-### Current Position
-**Postdoctoral Fellow** - Currently working on advanced quantum chemistry methods and their implementation in high-performance computing environments.
+### Current Appointment
 
-### Research Focus Areas
+- **Postdoctoral Fellow, University of Colorado Denver (2024 – present)** — Co-advised by Professors Emilie Guidez and Hai Lin, leading method development for multi-layer adaptive partitioning (MAP) and accelerator-aware electronic structure workflows.
 
-- **Quantum Chemistry Method Development**: Developing new theoretical and computational approaches for accurate molecular modeling
-- **High-Performance Computing**: Optimizing quantum chemistry codes for modern HPC architectures
-- **Industry Applications**: Bridging the gap between academic research and practical industry needs
-- **Software Development**: Creating efficient, user-friendly computational chemistry tools
+### Previous Experience
+
+- **Postdoctoral Research Associate, Ames National Laboratory (2022 – 2024)** — Advanced extreme-scale GAMESS development as part of DOE projects targeting heterogeneous supercomputing architectures.
+- **Graduate Research Assistant, Gordon Group · Iowa State University (2015 – 2022)** — Developed rigorous treatments of interfragment covalent bonds, scalable N-orthogonal MO expansions, and contributed to the GAMESS code base.
+- **Undergraduate Researcher, Prody Lab · Western Washington University (2014 – 2015)** — Built computational pipelines for structural biology and spectroscopy projects while completing the chemistry curriculum.
 
 ### Education
 
-My educational background has provided me with a strong foundation in both theoretical chemistry and computational methods, preparing me for the challenges of modern quantum chemistry research.
+- **Ph.D., Physical Chemistry — Iowa State University (2022)**  
+	*Dissertation:* *Developments in fragment-based quantum chemistry: Flattening the curve* (advisor: Mark S. Gordon).
+- **B.S., Chemistry — Western Washington University (2015)**
+- **A.S., Chemistry — Clark College (2012)**
 
-### Technical Expertise
+### Research & Technical Expertise
 
-#### Programming Languages
-- **Python**: Extensive experience with scientific computing libraries (NumPy, SciPy, Matplotlib)
-- **C/C++**: High-performance computing applications and method implementation
-- **Fortran**: Legacy code maintenance and optimization
-- **CUDA**: GPU acceleration for quantum chemistry calculations
-- **Bash/Shell**: System administration and workflow automation
+- **Fragment-based & partitioned quantum chemistry** — MAP, adaptive QM/MM, subsystem-local SAPT, and embedding strategies that balance accuracy with scalability.
+- **High-performance computing** — MPI/OpenMP hybrids, GPU acceleration, and performance engineering for emerging accelerator-driven architectures.
+- **Electronic structure software** — Core GAMESS development plus open-source libraries such as [`libfrag`](https://github.com/brycewestheimer/libfrag), `public_libaccefp`, and `public_libaccsapt`.
+- **Programming toolkit** — Fortran, C++, Python, CUDA, CMake, Git, and modern CI workflows for science codes.
 
-#### Computational Chemistry Software
-- **Gaussian**: Advanced calculations and method validation
-- **ORCA**: Density functional theory and coupled cluster methods
-- **PySCF**: Python-based quantum chemistry development
-- **Q-Chem**: Electronic structure calculations
-- **Custom Codes**: Development of specialized quantum chemistry methods
+### Recognition & Fellowships
 
-#### High-Performance Computing
-- **Parallel Programming**: MPI, OpenMP, and hybrid parallelization
-- **GPU Computing**: CUDA and OpenACC for accelerated calculations
-- **Cluster Management**: Job scheduling and resource optimization
-- **Code Optimization**: Performance profiling and bottleneck analysis
+- Molecular Sciences Software Institute (MolSSI) Software Fellow, 2020–2021 cohort.
+- Klaus Ruedenberg Theoretical Chemistry Award, Iowa State University.
 
-### Publications & Research Impact
+### Presentations & Community Engagement
 
-My research has contributed to advancing the field of computational chemistry through method development and practical applications. You can find my complete list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user={{ site.author.google_scholar }}).
+- ACS Fall 2024 PHYS Division talk: *Subsystem-local resolution of the identity: Novel methods for exchange repulsion effects in intermolecular interaction methods*.
+- Session presider for "Addressing the Complexity of Correlated Quantum Many-Body Problems by Embedding & Downfolding" at ACS Fall 2024.
+- Regular contributor to Guidez and Lin group seminars, with additional posters and invited talks on MAP-based methods.
 
-### Professional Goals
+### Beyond the Lab
 
-I am passionate about:
-- Developing computational methods that make quantum chemistry more accessible and efficient
-- Bridging the gap between academic research and industry applications
-- Contributing to open-source scientific software development
-- Mentoring the next generation of computational scientists
-
-### Beyond Research
-
-When I'm not working on quantum chemistry problems, I enjoy exploring new technologies, contributing to open-source projects, and staying up-to-date with the latest developments in scientific computing and software engineering.
+Open science and mentorship are core to my work. I maintain public repositories whenever possible, support early-career researchers adopting GAMESS-derived tooling, and enjoy collaborating with interdisciplinary teams across chemistry, applied math, and computer science.
 
 ---
 
 ## Let's Connect
 
-I'm always interested in discussing computational chemistry, method development, and potential collaborations. Feel free to reach out through any of the channels listed in my [contact page](/contact/) or connect with me on [LinkedIn](https://linkedin.com/in/{{ site.social_media.linkedin }}).
+Curious about collaboration, code, or speaking opportunities? Reach out via the [contact page](/contact/), connect on [LinkedIn](https://linkedin.com/in/{{ site.social_media.linkedin }}), or drop a note on [GitHub](https://github.com/brycewestheimer).

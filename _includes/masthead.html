@@ -1,18 +1,33 @@
+{% assign display_name = user.name | default: site.author.name | default: 'Bryce Westheimer' %}
+{% assign display_title = site.author.title | default: user.company %}
+{% assign display_bio = site.author.bio | default: user.bio %}
+
 <div class="profile">
-  <img src="{% if user.avatar_url %}{{ user.avatar_url }}{% elsif site.author.avatar %}{{ site.author.avatar | relative_url }}{% else %}{{ '/assets/favicon.svg' | relative_url }}{% endif %}" class="profile__avatar" alt="{% if user.name %}{{ user.name }}{% else %}Bryce Westheimer{% endif %} - Professional Photo" onerror="this.src='{{ '/assets/favicon.svg' | relative_url }}'">
+  <img src="{% if user.avatar_url %}{{ user.avatar_url }}{% elsif site.author.avatar %}{{ site.author.avatar | relative_url }}{% else %}{{ '/assets/favicon.svg' | relative_url }}{% endif %}"
+    class="profile__avatar"
+    alt="{{ display_name }} headshot">
   
-  <h1 class="profile__name">
-    {% if user.name %}{{ user.name }}, PhD{% elsif site.author.name %}{{ site.author.name }}, PhD{% else %}Bryce Westheimer, PhD{% endif %}
-  </h1>
-  
-  <p class="profile__bio">
-    Postdoctoral researcher specializing in <strong>quantum chemistry method development</strong> and <strong>high-performance computing</strong>. 
-    <br><br>
-    Expertise in developing scalable computational algorithms and transitioning cutting-edge research into practical industry solutions.
-  </p>
+  <h1 class="profile__name">{{ display_name }}</h1>
+
+  {% if display_title %}
+    <p class="profile__title">{{ display_title }}</p>
+  {% endif %}
+
+  {% if display_bio %}
+    <div class="profile__bio">
+      {{ display_bio | markdownify }}
+    </div>
+  {% endif %}
 
   {% if include.metadata %}
     <div class="profile__meta">
+      {% if display_title %}
+        <div class="profile__meta-item">
+          {% octicon briefcase height:16 class:"" fill:currentColor aria-label:Role %}
+          {{ display_title }}
+        </div>
+      {% endif %}
+      
       <div class="profile__meta-item">
         {% octicon mark-github height:16 class:"" fill:currentColor aria-label:GitHub %}
         <a href="https://github.com/{% if user.login %}{{ user.login }}{% else %}{{ site.author.github }}{% endif %}">

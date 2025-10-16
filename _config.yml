@@ -1,19 +1,20 @@
 # Site Configuration
 title: "Bryce Westheimer"
-description: "Postdoctoral Fellow specializing in quantum chemistry method development and high-performance computing applications"
+description: "Postdoctoral fellow advancing fragment-based quantum chemistry and accelerator-ready scientific software"
 url: "https://brycewestheimer.github.io"
 baseurl: ""
 
 # Author Information
 author:
   name: "Bryce Westheimer"
-  bio: "Quantum chemistry researcher developing scalable computational methods for industry applications"
-  location: "Vancouver, WA (Remote)"
-  email: "westheb@gmail.com"  # Update with your actual email
+  title: "Postdoctoral Fellow, University of Colorado Denver"
+  bio: "Postdoctoral fellow with the Guidez & Lin labs developing fragment-based quantum chemistry methods, multi-layer adaptive partitioning workflows, and accelerator-ready GAMESS infrastructure."
+  location: "Vancouver, WA · collaborating with CU Denver"
+  email: "westheb@gmail.com"
   github: "brycewestheimer"
-  linkedin: "bryce-westheimer"  # Update with your LinkedIn username
-  google_scholar: "gnELDysAAAAJ"  # Your Google Scholar ID from the search
-  avatar: "/assets/favicon.svg"  # Using favicon.svg as profile image
+  linkedin: "bryce-westheimer"
+  google_scholar: "gnELDysAAAAJ"
+  avatar: "/assets/profile_image.jpg"
 
 # Site Settings
 layout: sidebar
@@ -91,66 +92,69 @@ navigation:
 
 # Social Media Configuration
 social_media:
-  linkedin: bryce-westheimer  # Update with your actual LinkedIn username
   github: brycewestheimer
+  linkedin: bryce-westheimer
   google_scholar: gnELDysAAAAJ
-  email: westheb@gmail.com  # Update with your actual email
-  # Add other social media as needed
+  email: westheb@gmail.com
 
 # Research Topics & Expertise
 topics:
-  - name: "Quantum Chemistry Method Development"
-    description: "Ab initio fragmentation methods and scalable quantum chemistry algorithms"
-    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
-    image_url: "/assets/images/quantum-chemistry.svg"
-    
-  - name: "High-Performance Computing"
-    description: "Optimization of quantum chemistry software for novel computer architectures"
-    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
-    image_url: "/assets/images/hpc.svg"
-    
-  - name: "QM/MM Methods"
-    description: "Mixed quantum mechanics/molecular mechanics simulation techniques"
-    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
-    image_url: "/assets/images/qmmm.svg"
-    
-  - name: "Computational Chemistry Software"
-    description: "Development and optimization of scientific computing applications"
-    web_url: "https://scholar.google.com/citations?user=gnELDysAAAAJ"
-    image_url: "/assets/images/software.svg"
+  - name: "Fragment-Based Quantum Chemistry"
+    description: "Subsystem-local SAPT, covalent fragment coupling, and MAP-enabled workflows for chemically realistic systems."
+    web_url: "/research/"
+    link_label: "Explore research"
+  - name: "Multi-layer Adaptive Partitioning (MAP)"
+    description: "Hierarchical partitioning strategies and analysis tooling that balance accuracy and scalability."
+    web_url: "/projects/"
+    link_label: "See MAP tooling"
+  - name: "Accelerator-Ready Electronic Structure"
+    description: "Optimizing GAMESS-derived kernels for heterogeneous CPU/GPU architectures and DOE-class platforms."
+    web_url: "/projects/"
+    link_label: "View accelerator work"
+  - name: "Open Scientific Software"
+    description: "Maintaining collaborative, open-source infrastructure that helps labs adopt fragment-based methods."
+    web_url: "/projects/"
+    link_label: "Browse repositories"
 
 # Skills & Technologies
 skills:
   languages:
     - "Fortran"
-    - "C/C++"
+    - "C++"
     - "Python"
     - "CUDA"
-    - "OpenMP"
-    - "MPI"
+    - "MPI/OpenMP"
   frameworks:
     - "GAMESS"
-    - "NumPy/SciPy"
-    - "PyTorch/TensorFlow"
-    - "Jupyter"
+    - "libfrag"
+    - "Accelerated EFP/SAPT"
+    - "CMake"
   tools:
     - "Git"
-    - "CMake"
-    - "Docker"
     - "SLURM"
-    - "Intel Compilers"
     - "NVIDIA HPC SDK"
+    - "Intel oneAPI"
+    - "GitHub Actions"
 
 # Key Projects (upcoming)
 featured_projects:
-  - name: "PyFrag"
-    description: "Python-based fragmentation analysis toolkit"
-    status: "In Development"
-    
-  - name: "LibAccInt"
-    description: "Accurate integration library for quantum chemistry"
-    status: "In Development"
-    
-  - name: "MAP-QM/MM"
-    description: "Massively parallel QM/MM simulation framework"
-    status: "In Development"
+  - name: "libfrag"
+    status: "Active development"
+    description: "Fragment-based quantum chemistry sandbox for MAP prototypes and subsystem analyses."
+    tech: "Python · C++ · CMake"
+    url: "https://github.com/brycewestheimer/libfrag"
+  - name: "public_libaccefp"
+    status: "Public preview"
+    description: "GPU-aware effective fragment potential kernels shared for community benchmarking."
+    tech: "C++ · CUDA · Fortran"
+    url: "https://github.com/brycewestheimer/public_libaccefp"
+  - name: "public_libaccsapt"
+    status: "Preview"
+    description: "Subsystem-local SAPT acceleration modules aligned with ACS Fall 2024 highlights."
+    tech: "C++ · OpenMP · MPI"
+    url: "https://github.com/brycewestheimer/public_libaccsapt"
+  - name: "public_qccg"
+    status: "In development"
+    description: "Template-driven kernel generator supporting GAMESS modernization."
+    tech: "C++ · Python"
+    url: "https://github.com/brycewestheimer/public_qccg"

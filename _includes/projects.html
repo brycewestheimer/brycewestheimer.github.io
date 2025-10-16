@@ -1,101 +1,53 @@
 <section class="section">
   <div class="section__header">
     <h2>Featured Projects</h2>
-    <p>Research and development projects showcasing computational chemistry and high-performance computing expertise.</p>
+    <p>Research software and MAP workflows currently under active development.</p>
   </div>
 
-  <!-- Featured upcoming projects -->
   {% if site.featured_projects %}
     <div class="projects-grid">
       {% for project in site.featured_projects %}
         <div class="project-card">
           <div class="project-card__header">
             <h3>{{ project.name }}</h3>
-            <span class="tech-tag">{{ project.status }}</span>
+            {% if project.status %}
+              <span class="tech-tag">{{ project.status }}</span>
+            {% endif %}
           </div>
           <div class="project-card__description">
             <p>{{ project.description }}</p>
           </div>
           <div class="project-card__footer">
             <div class="project-card__footer-left">
-              <span class="project-card__language">
-                <span class="repo-language-color" style="background-color: #89e051;"></span>
-                Quantum Chemistry
-              </span>
+              {% if project.tech %}
+                <span class="project-card__language">
+                  <span class="repo-language-color" style="background-color: var(--color-accent, #0366d6);" aria-hidden="true"></span>
+                  {{ project.tech }}
+                </span>
+              {% endif %}
             </div>
+            {% if project.url %}
+              <div class="project-card__footer-right">
+                <a href="{{ project.url }}" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+                  View project
+                </a>
+              </div>
+            {% endif %}
           </div>
         </div>
       {% endfor %}
     </div>
   {% endif %}
 
-  <!-- GitHub repositories -->
   <div class="section__header" style="margin-top: var(--spacing-3xl);">
     <h3>Open Source Contributions</h3>
-    <p>Public repositories and contributions to the scientific computing community.</p>
-  </div>
-
-  <div class="projects-grid">
-    {% comment %} Fallback when GitHub API is not available {% endcomment %}
-    <div class="project-card">
-      <div class="project-card__header">
-        <h3>Quantum Chemistry Software</h3>
-        <span class="tech-tag">Active Development</span>
-      </div>
-      <div class="project-card__description">
-        <p>Advanced computational tools for quantum chemistry calculations and molecular modeling, featuring GPU acceleration and parallel processing optimizations.</p>
-      </div>
-      <div class="project-card__footer">
-        <div class="project-card__footer-left">
-          <span class="project-card__language">
-            <span class="repo-language-color" style="background-color: #3178c6;"></span>
-            Python / C++
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card__header">
-        <h3>High-Performance Computing Libraries</h3>
-        <span class="tech-tag">Research</span>
-      </div>
-      <div class="project-card__description">
-        <p>Scalable algorithms and libraries for distributed scientific computing, optimized for modern HPC architectures and cloud environments.</p>
-      </div>
-      <div class="project-card__footer">
-        <div class="project-card__footer-left">
-          <span class="project-card__language">
-            <span class="repo-language-color" style="background-color: #89e051;"></span>
-            Fortran / CUDA
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card__header">
-        <h3>Machine Learning for Chemistry</h3>
-        <span class="tech-tag">Publication Ready</span>
-      </div>
-      <div class="project-card__description">
-        <p>ML models and frameworks for accelerating quantum chemistry calculations and discovering new chemical properties through data-driven approaches.</p>
-      </div>
-      <div class="project-card__footer">
-        <div class="project-card__footer-left">
-          <span class="project-card__language">
-            <span class="repo-language-color" style="background-color: #f1e05a;"></span>
-            Python / TensorFlow
-          </span>
-        </div>
-      </div>
-    </div>
+    <p>Follow active repository development and release notes on <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
   </div>
 
   <div class="text-center" style="margin-top: var(--spacing-xl);">
     <a href="https://github.com/{{ site.author.github }}" class="btn btn--outline">
       {% octicon mark-github height:16 %}
-      View All Repositories
+      View all repositories
     </a>
   </div>
 </section>

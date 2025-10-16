@@ -5,12 +5,35 @@
 {% endif %}
 {% assign posts_total = site.posts | size %}
 
-{% if page.path contains '_posts' %}
-  {% assign page_title = page.title %}
-  {% assign meta_description = page.content | strip_html | strip_newlines | xml_escape | truncate: 160 %}
+{% assign page_title = page.title | default: site.title %}
+{% if page.title %}
+  {% assign document_title = page.title | append: ' | ' | append: site.title %}
 {% else %}
-  {% assign page_title = user.name %}
-  {% assign meta_description = site.description | strip_html | strip_newlines | xml_escape | truncate: 160 %}
+  {% assign document_title = site.title | append: ' - ' | append: site.description %}
+{% endif %}
+
+{% assign raw_description = page.description | default: page.excerpt | default: site.description %}
+{% assign meta_description = raw_description | strip_html | strip_newlines | replace: '&nbsp;', ' ' | replace: '  ', ' ' | replace: '  ', ' ' | strip | truncate: 160 %}
+
+{% assign meta_image_source = page.og_image | default: page.image | default: site.author.avatar | default: '/assets/favicon.svg' %}
+{% if meta_image_source contains '://' %}
+  {% assign meta_image = meta_image_source %}
+{% else %}
+  {% assign meta_image = meta_image_source | absolute_url %}
+{% endif %}
+
+{% assign og_type = 'website' %}
+{% if page.layout == 'post' or page.collection == 'posts' %}
+  {% assign og_type = 'article' %}
+{% endif %}
+
+{% assign author_title = site.author.title | default: '' %}
+{% assign author_job_title = author_title %}
+{% assign author_org = '' %}
+{% if author_title contains ',' %}
+  {% assign author_parts = author_title | split: ',' %}
+  {% assign author_job_title = author_parts[0] | strip %}
+  {% assign author_org = author_parts[1] | strip %}
 {% endif %}
 
 <!doctype html>
@@ -20,24 +43,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- SEO Meta Tags -->
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}</title>
-    <meta name="description" content="{{ meta_description }}">
+    <title>{{ document_title | escape }}</title>
+    <meta name="description" content="{{ meta_description | escape }}">
     <meta name="author" content="{{ site.author.name }}">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ og_type }}">
+    <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
-    <meta property="og:title" content="{{ page_title }}">
-    <meta property="og:description" content="{{ meta_description }}">
-    <meta property="og:image" content="{% if user.avatar_url %}{{ user.avatar_url }}{% else %}{{ site.url }}/assets/favicon.svg{% endif %}">
+    <meta property="og:title" content="{{ page_title | escape }}">
+    <meta property="og:description" content="{{ meta_description | escape }}">
+    <meta property="og:image" content="{{ meta_image }}">
+    <meta property="og:image:alt" content="{{ page_title | escape }}">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ page.url | absolute_url }}">
-    <meta property="twitter:title" content="{{ page_title }}">
-    <meta property="twitter:description" content="{{ meta_description }}">
-    <meta property="twitter:image" content="{% if user.avatar_url %}{{ user.avatar_url }}{% else %}{{ site.url }}/assets/favicon.svg{% endif %}">
+    <meta property="twitter:title" content="{{ page_title | escape }}">
+    <meta property="twitter:description" content="{{ meta_description | escape }}">
+    <meta property="twitter:image" content="{{ meta_image }}">
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#0366d6">
@@ -61,24 +86,53 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "{{ site.author.name }}",
-      "url": "{{ site.url }}",
-      "description": "{{ site.description }}",
-      "jobTitle": "Postdoctoral Fellow",
+      "url": "{{ site.url | default: site.github.url | default: site.baseurl | absolute_url }}",
+      "description": "{{ site.description | strip_html | strip_newlines | replace: '"', '\\"' }}",
+      "image": "{{ meta_image }}",
+      "jobTitle": "{{ author_job_title }}"{% if author_org != '' %},
       "worksFor": {
         "@type": "Organization",
-        "name": "Computational Chemistry Research"
-      },
-      "alumniOf": "PhD in Chemistry",
+        "name": "{{ author_org }}"
+      }{% endif %}{% if site.author.email %},
+      "email": "mailto:{{ site.author.email }}"{% endif %}{% if site.author.location %},
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ site.author.location }}"
+      }{% endif %},
       "knowsAbout": [
-        "Quantum Chemistry",
-        "High-Performance Computing", 
-        "Machine Learning",
-        "Software Development"
+        {% if site.topics %}
+          {% for topic in site.topics %}
+            "{{ topic.name | replace: '"', '\\"' }}"{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        {% else %}
+          "Quantum Chemistry",
+          "High-Performance Computing",
+          "Scientific Software"
+        {% endif %}
       ],
       "sameAs": [
-        "https://github.com/{{ site.social_media.github }}",
-        "https://linkedin.com/in/{{ site.social_media.linkedin }}",
-        "https://scholar.google.com/citations?user={{ site.social_media.google_scholar }}"
+        {% assign same_as_count = 0 %}
+        {% if site.social_media %}
+          {% for account in site.social_media %}
+            {% assign service_key = account[0] %}
+            {% assign identifier = account[1] %}
+            {% assign service = site.data.social_media[service_key] %}
+            {% if service and identifier %}
+              {% capture account_url %}
+                {% if service_key == 'email' %}
+                  mailto:{{ identifier }}
+                {% else %}
+                  {{ service.profile_url_prefix }}{{ identifier }}
+                {% endif %}
+              {% endcapture %}
+              {% assign account_url = account_url | strip %}
+              {% if account_url != '' %}
+                {% if same_as_count > 0 %},{% endif %}"{{ account_url | replace: '"', '\\"' }}"
+                {% assign same_as_count = same_as_count | plus: 1 %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       ]
     }
     </script>

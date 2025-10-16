@@ -7,121 +7,57 @@ permalink: /research/
 
 ## Research Overview
 
-My research focuses on developing and implementing advanced quantum chemistry methods that are both theoretically sound and computationally efficient. I work at the intersection of method development, software engineering, and high-performance computing to create tools that can tackle real-world chemical problems.
+My work integrates quantum chemistry method development with performance-portable software aimed at accelerator-heavy computing environments. I collaborate closely with the Guidez and Lin groups at the University of Colorado Denver as well as with Ames National Laboratory teams to push fragment-based methods toward chemically realistic scales.
 
-## Current Research Areas
+## Core Themes
 
-### Quantum Chemistry Method Development
+### Multi-layer adaptive partitioning (MAP)
 
-#### Electronic Structure Theory
-- Development of new density functional theory (DFT) functionals for improved accuracy
-- Implementation of coupled cluster methods for high-accuracy calculations
-- Exploration of multiconfigurational approaches for strongly correlated systems
+- Extending MAP approaches to treat complex reactive environments while maintaining chemical accuracy.
+- Designing hierarchical partitioning strategies that balance subsystem fidelity and computational cost.
+- Building reusable MAP analysis workflows for collaborators.
 
-#### Method Implementation
-- Efficient algorithms for large-scale quantum chemistry calculations
-- Code optimization for modern computer architectures
-- Integration of machine learning techniques with traditional quantum chemistry methods
+### Fragment-based electronic structure at scale
 
-### High-Performance Computing Applications
+- Advancing interfragment coupling models for covalent systems, including rigorous treatments published in *J. Phys. Chem. A* and *J. Chem. Phys.*
+- Modernizing GAMESS fragmentation modules to run efficiently on GPU-enabled supercomputers.
+- Maintaining [`libfrag`](https://github.com/brycewestheimer/libfrag) as an open-source sandbox for new fragment-based algorithms.
 
-#### Parallel Algorithm Development
-- Scalable implementations of quantum chemistry methods
-- Load balancing strategies for heterogeneous computing environments
-- Memory-efficient algorithms for large molecular systems
+### High-performance computing & accelerator enablement
 
-#### GPU Acceleration
-- CUDA implementations of computationally intensive kernels
-- Mixed-precision arithmetic for enhanced performance
-- Optimization strategies for different GPU architectures
+- Optimizing quantum chemistry kernels for heterogeneous CPU/GPU architectures through MPI/OpenMP hybrids and CUDA implementations.
+- Benchmarking adaptive partitioning workloads on DOE-class systems in partnership with Ames National Laboratory.
+- Leading efforts to ensure novel methods land in production-quality, maintainable code bases.
 
-### Industry-Focused Applications
+### Community-facing infrastructure
 
-#### Drug Discovery
-- Computational tools for pharmaceutical research
-- Accurate modeling of protein-drug interactions
-- High-throughput virtual screening methods
+- Delivering documentation, example inputs, and developer guides that help external groups adopt MAP-driven tools.
+- Coordinating with MolSSI and multi-institutional teams to align software roadmaps with user needs.
 
-#### Materials Science
-- Electronic structure calculations for novel materials
-- Property prediction for materials design
-- Catalysis modeling and optimization
+## Active Projects
 
-#### Environmental Chemistry
-- Atmospheric chemistry modeling
-- Pollutant degradation mechanisms
-- Green chemistry method development
+- **Subsystem-local SAPT acceleration** — Applying resolution-of-identity techniques to reduce the cost of exchange-repulsion terms, the subject of my ACS Fall 2024 presentation.
+- **Accelerated MAP workflow** — Co-developing GPU-ready MAP components within the Guidez and Lin labs, targeting realistic condensed-phase simulations.
+- **GAMESS extreme-scale modernization** — Continuing collaborations with Ames National Laboratory to deploy new fragmentation kernels across DOE leadership-class machines.
 
-## Recent Research Highlights
+## Recent Highlights
 
-### Project 1: Scalable DFT Implementation
-Development of a highly scalable density functional theory code optimized for modern supercomputing architectures. This work focuses on:
-- Novel parallelization strategies for the self-consistent field procedure
-- Efficient handling of large basis sets
-- Integration with GPU acceleration
+- Presented "Subsystem-local resolution of the identity" at the ACS Fall 2024 PHYS Division meeting and presided over the correlated many-body embedding symposium.
+- Awarded the MolSSI Software Fellowship (2020–2021) to architect open-source libraries for fragment-based quantum chemistry.
+- Recognized with the Klaus Ruedenberg Theoretical Chemistry Award at Iowa State University for dissertation-era advances in covalent fragment coupling.
 
-### Project 2: Machine Learning Enhanced Quantum Chemistry
-Integration of machine learning models with traditional quantum chemistry methods to:
-- Accelerate property predictions
-- Improve convergence in iterative procedures
-- Enable rapid screening of large chemical databases
+## Collaborations & Partnerships
 
-### Project 3: Industry Collaboration Framework
-Development of computational tools specifically designed for industry applications:
-- User-friendly interfaces for non-expert users
-- Automated workflow management
-- Integration with existing industry software packages
+- **University of Colorado Denver** — Daily collaboration with the Guidez Lab (multiscale methods) and Lin Group (computational chemistry applications).
+- **Ames National Laboratory & Iowa State University** — Ongoing GAMESS development, exascale readiness, and co-authorship on novel architecture studies.
+- **MolSSI community** — Contributions to best practices for sustainable scientific software and mentorship of incoming fellows.
 
-## Research Philosophy
+## Research Outputs
 
-My approach to computational chemistry research is guided by several key principles:
-
-1. **Practical Relevance**: Research should address real-world problems and have clear applications
-2. **Open Science**: Methods and software should be accessible to the broader scientific community
-3. **Interdisciplinary Collaboration**: The best solutions often come from combining expertise across fields
-4. **Continuous Learning**: Staying current with developments in both chemistry and computer science
-
-## Collaboration Opportunities
-
-I am actively seeking collaborations in:
-- Method development for specific chemical systems
-- Software optimization and parallelization
-- Industry applications of quantum chemistry
-- Educational outreach and training
-
-## Future Directions
-
-### Short-term Goals (1-2 years)
-- Complete development of scalable DFT framework
-- Publish machine learning integration methodology
-- Establish industry partnerships for method validation
-
-### Long-term Vision (3-5 years)
-- Create a comprehensive quantum chemistry software suite
-- Develop educational resources for computational chemistry
-- Lead international collaborative research projects
-
-## Publications and Presentations
-
-For a complete list of my publications, please visit my [Google Scholar profile](https://scholar.google.com/citations?user={{ site.author.google_scholar }}). Key publications include work on:
-
-- Method development for density functional theory
-- High-performance computing implementations
-- Applications to drug discovery and materials science
-
-## Research Tools and Software
-
-### Developed Software
-- **QCOptimizer**: GPU-accelerated quantum chemistry optimization toolkit
-- **MLChem**: Machine learning integration library for quantum chemistry
-- **HPCChem**: High-performance computing utilities for chemistry applications
-
-### Computational Resources
-Regular access to:
-- National supercomputing facilities
-- Local high-performance computing clusters
-- GPU-accelerated workstations
+- Peer-reviewed publications span fragment-based theory, scalable electronic structure algorithms, and novel computer architecture studies. See the [publications page](/publications/) or [Google Scholar](https://scholar.google.com/citations?user={{ site.author.google_scholar }}) for the full list.
+- Open-source releases include `libfrag`, `public_libaccefp`, and `public_libaccsapt`, with additional MAP utilities under active development.
+- Internal documentation and tutorials power recurring workshops for Guidez/Lin group members and collaborators exploring MAP workflows.
 
 ---
 
-*Interested in learning more about any of these research areas? Feel free to [contact me](/contact/) to discuss potential collaborations or questions about my work.*
+Interested in collaborating or learning more about these projects? Reach out via the [contact page](/contact/) or open an issue on GitHub.
