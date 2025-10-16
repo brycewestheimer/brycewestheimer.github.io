@@ -1,15 +1,15 @@
 # Site Configuration
 title: "Bryce Westheimer"
-description: "Postdoctoral fellow advancing fragment-based quantum chemistry and accelerator-ready scientific software"
+description: "Theoretical chemistry and applied mathematics researcher advancing computational modeling, optimization, and numerical analysis for fragment-based quantum chemistry"
 url: "https://brycewestheimer.github.io"
 baseurl: ""
 
 # Author Information
 author:
   name: "Bryce Westheimer"
-  title: "Postdoctoral Fellow, University of Colorado Denver"
-  bio: "Postdoctoral fellow with the Guidez & Lin labs developing fragment-based quantum chemistry methods, multi-layer adaptive partitioning workflows, and accelerator-ready GAMESS infrastructure."
-  location: "Vancouver, WA · collaborating with CU Denver"
+  title: "Postdoctoral Fellow (Computational Modeling and Data Analysis), University of Colorado Denver"
+  bio: "Theoretical chemist and applied mathematician focused on computational modeling, optimization, and numerical analysis for fragment-based quantum chemistry and accelerator-ready scientific software."
+  location: "Vancouver, WA"
   email: "brycemwestheimer@gmail.com"
   github: "brycewestheimer"
   linkedin: "bryce-westheimer"
