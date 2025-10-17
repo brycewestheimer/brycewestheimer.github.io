@@ -3,14 +3,13 @@ layout: default
 ---
 
 <div class="blog-wrapper">
-  <div class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">{{ page.title | default: "Blog" }}</h1>
-      {% if page.description %}
+  {% if page.description %}
+    <div class="blog-header">
+      <div class="container">
         <p class="blog-description">{{ page.description }}</p>
-      {% endif %}
+      </div>
     </div>
-  </div>
+  {% endif %}
 
   <div class="blog-content">
     <div class="container">
