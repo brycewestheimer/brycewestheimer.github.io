@@ -5,6 +5,15 @@ description: "Peer-reviewed publications and research contributions in computati
 permalink: /publications/
 ---
 
+## Explore by Topic
+
+View publications organized by research area:
+
+- [Computational Chemistry Publications](/topics/computational-chemistry/#publications)
+- [Machine Learning & AI Publications](/topics/ml-ai/#publications)
+
+---
+
 ## Overview
 
 This page captures peer-reviewed work focused on fragment-based quantum chemistry, extreme-scale electronic structure, and the software that supports those calculations. For an automatically updated list, visit my [Google Scholar profile](https://scholar.google.com/citations?user={{ site.author.google_scholar }}).

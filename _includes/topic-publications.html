@@ -1,0 +1,15 @@
+<section class="topic-section">
+  <h2>Publications</h2>
+  
+  {% assign topic_pubs = site.topics[page.topic_id].publications %}
+  {% if topic_pubs and topic_pubs.size > 0 %}
+    <div class="publications-list">
+      <p>See all publications on the <a href="/publications/">Publications page</a>.</p>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <p>Publication highlights for this topic coming soon.</p>
+      <p>Check the <a href="/publications/">Publications page</a> for all work.</p>
+    </div>
+  {% endif %}
+</section>

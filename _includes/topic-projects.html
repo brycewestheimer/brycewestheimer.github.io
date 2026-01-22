@@ -1,0 +1,48 @@
+{% assign topic_projects = site.topics[page.topic_id].projects %}
+
+{% if topic_projects and topic_projects.size > 0 %}
+  <section class="topic-section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      {% for project_name in topic_projects %}
+        {% assign project = site.featured_projects | where: "name", project_name | first %}
+        {% if project %}
+          <div class="project-card">
+            <div class="project-card__header">
+              <h3>
+                <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ project.name }} repository on GitHub">
+                  {% octicon repo height:16 aria-hidden:true %}
+                  {{ project.name }}
+                </a>
+              </h3>
+              {% if project.status %}
+                <span class="tech-tag">{{ project.status }}</span>
+              {% endif %}
+            </div>
+            
+            <div class="project-card__description">
+              <p>{{ project.description }}</p>
+            </div>
+            
+            <div class="project-card__footer">
+              <div class="project-card__footer-left">
+                {% if project.tech %}
+                  <span class="project-card__language">
+                    <span class="repo-language-color" style="background-color: var(--color-primary, #1e3a8a);" aria-hidden="true"></span>
+                    {{ project.tech }}
+                  </span>
+                {% endif %}
+              </div>
+              
+              <div class="project-card__footer-right">
+                <a href="{{ project.url }}" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+                  View project
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

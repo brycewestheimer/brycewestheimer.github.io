@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div class="topic-header">
+  <div class="container">
+    <h1 class="topic-header__title">{{ page.topic_name }}</h1>
+    <p class="topic-header__description">{{ page.topic_description }}</p>
+  </div>
+</div>
+
+<div class="topic-content">
+  <div class="container">
+    {{ content }}
+    
+    {% include topic-projects.html %}
+    {% include topic-publications.html %}
+    {% include topic-blog.html %}
+    {% include topic-skills.html %}
+  </div>
+</div>

@@ -7,9 +7,21 @@ permalink: /blog/
 
 ## Latest Posts
 
+<div class="blog-notice">
+  <h3>Blog Under Construction</h3>
+  <p>This section is being rebuilt with new content. Check back soon for updates on computational chemistry, method development, and scientific computing.</p>
+</div>
+
+<div class="blog-filters">
+  <button class="filter-btn active" data-filter="all">All Posts</button>
+  <button class="filter-btn" data-filter="ml-ai">ML & AI</button>
+  <button class="filter-btn" data-filter="computational-chemistry">Computational Chemistry</button>
+  <button class="filter-btn" data-filter="general">General</button>
+</div>
+
 <div class="post-grid">
   {% for post in site.posts %}
-    <article class="post-card">
+    <article class="post-card" data-category="{% if post.categories.size > 0 %}{{ post.categories[0] }}{% endif %}">
       <header class="post-header">
         <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
         <div class="post-meta">
@@ -54,21 +66,34 @@ permalink: /blog/
   <div class="no-posts">
     <h3>Coming Soon!</h3>
     <p>I'm working on some exciting blog posts about computational chemistry, method development, and scientific computing. Check back soon for updates!</p>
-    
-    <div class="planned-topics">
-      <h4>Planned Topics:</h4>
-      <ul>
-        <li>Getting Started with GPU-Accelerated Quantum Chemistry</li>
-        <li>Machine Learning in Computational Chemistry: A Practical Guide</li>
-        <li>Optimizing Python Code for Scientific Computing</li>
-        <li>Best Practices for High-Performance Computing in Chemistry</li>
-        <li>Building Scalable Quantum Chemistry Workflows</li>
-      </ul>
-    </div>
-    
-    <p>Want to be notified when new posts are published? <a href="/contact/">Get in touch</a> and I'll add you to my mailing list!</p>
   </div>
 {% endif %}
+
+<script>
+// Blog filtering functionality
+(function() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const postCards = document.querySelectorAll('.post-card');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      postCards.forEach(card => {
+        const cardCategory = card.dataset.category || 'none';
+        if (filter === 'all' || cardCategory === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
 
 ## What You'll Find Here
 

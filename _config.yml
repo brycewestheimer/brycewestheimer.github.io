@@ -77,10 +77,19 @@ navigation:
     url: "/"
   - name: "About"
     url: "/about/"
+  - name: "Projects"
+    subnav:
+      - name: "Computational Chemistry"
+        url: "/topics/computational-chemistry/"
+        category: "computational-chemistry"
+      - name: "ML & AI"
+        url: "/topics/ml-ai/"
+        category: "ml-ai"
+      - name: "General Software"
+        url: "/topics/general/"
+        category: "general"
   - name: "Research"
     url: "/research/"
-  - name: "Projects"
-    url: "/projects/"
   - name: "Publications"
     url: "/publications/"
   - name: "Blog"
@@ -97,24 +106,54 @@ social_media:
   google_scholar: gnELDysAAAAJ
   email: brycemwestheimer@gmail.com
 
-# Research Topics & Expertise
+# Research Topics & Expertise (Old - replaced by topics section below)
+# topics:
+#   - name: "Fragment-Based Quantum Chemistry"
+#     description: "Subsystem-local SAPT, covalent fragment coupling, and MAP-enabled workflows for chemically realistic systems."
+#     web_url: "/research/"
+#     link_label: "Explore research"
+#   - name: "Multi-layer Adaptive Partitioning (MAP)"
+#     description: "Hierarchical partitioning strategies and analysis tooling that balance accuracy and scalability."
+#     web_url: "/projects/"
+#     link_label: "See MAP tooling"
+#   - name: "Accelerator-Ready Electronic Structure"
+#     description: "Optimizing GAMESS-derived kernels for heterogeneous CPU/GPU architectures and DOE-class platforms."
+#     web_url: "/projects/"
+#     link_label: "View accelerator work"
+#   - name: "Open Scientific Software"
+#     description: "Maintaining collaborative, open-source infrastructure that helps labs adopt fragment-based methods."
+#     web_url: "/projects/"
+#     link_label: "Browse repositories"
+
+# Topic Pages Data Structure
 topics:
-  - name: "Fragment-Based Quantum Chemistry"
-    description: "Subsystem-local SAPT, covalent fragment coupling, and MAP-enabled workflows for chemically realistic systems."
-    web_url: "/research/"
-    link_label: "Explore research"
-  - name: "Multi-layer Adaptive Partitioning (MAP)"
-    description: "Hierarchical partitioning strategies and analysis tooling that balance accuracy and scalability."
-    web_url: "/projects/"
-    link_label: "See MAP tooling"
-  - name: "Accelerator-Ready Electronic Structure"
-    description: "Optimizing GAMESS-derived kernels for heterogeneous CPU/GPU architectures and DOE-class platforms."
-    web_url: "/projects/"
-    link_label: "View accelerator work"
-  - name: "Open Scientific Software"
-    description: "Maintaining collaborative, open-source infrastructure that helps labs adopt fragment-based methods."
-    web_url: "/projects/"
-    link_label: "Browse repositories"
+  computational-chemistry:
+    name: "Computational Chemistry"
+    description: "Fragment-based quantum chemistry, MAP methods, and electronic structure software development"
+    icon: "beaker"
+    url: "/topics/computational-chemistry/"
+    projects:
+      - "libfrag"
+      - "public_libaccsapt"
+      - "public_qccg"
+    skills: ["GAMESS", "Psi4", "PySCF", "Fortran", "C++", "libfrag", "MAP", "Subsystem-local SAPT"]
+    
+  ml-ai:
+    name: "ML & AI"
+    description: "Machine learning applications for computational chemistry, method acceleration, and molecular discovery"
+    icon: "cpu"
+    url: "/topics/ml-ai/"
+    projects:
+      - "public_libaccefp"
+    skills: ["PyTorch", "TensorFlow", "JAX", "TensorFlow Probability", "scikit-learn", "Neural Networks", "Method Acceleration"]
+    
+  general:
+    name: "General Software"
+    description: "Developer tools, utilities, and general-purpose software projects"
+    icon: "package"
+    url: "/topics/general/"
+    projects: []
+    skills: ["Git", "GitHub Actions", "Docker", "CI/CD", "Bash", "Python", "DevOps", "Conda/Mamba", "Spack"]
 
 # Skills & Technologies
 skills:
@@ -150,21 +189,25 @@ skills:
 # Key Projects (upcoming)
 featured_projects:
   - name: "libfrag"
+    topic: "computational-chemistry"
     status: "Active development"
     description: "Fragment-based quantum chemistry sandbox for MAP prototypes and subsystem analyses."
     tech: "Python · C++ · CMake"
     url: "https://github.com/brycewestheimer/libfrag"
   - name: "public_libaccefp"
+    topic: "ml-ai"
     status: "Public preview"
     description: "GPU-aware effective fragment potential kernels shared for community benchmarking."
     tech: "C++ · CUDA · Fortran"
     url: "https://github.com/brycewestheimer/libaccefp"
   - name: "public_libaccsapt"
+    topic: "computational-chemistry"
     status: "Preview"
     description: "Subsystem-local SAPT acceleration modules aligned with ACS Fall 2024 highlights."
     tech: "C++ · OpenMP · MPI"
     url: "https://github.com/brycewestheimer/libaccsapt"
   - name: "public_qccg"
+    topic: "computational-chemistry"
     status: "In development"
     description: "Template-driven kernel generator supporting quantum chemistry code modernization."
     tech: "C++ · Python"

@@ -19,13 +19,37 @@
           {% assign current_path = page.url | remove: '.html' %}
           {% assign nav_path = item.url | remove: '.html' %}
           
-          <li class="main-nav__item">
-            <a href="{{ item.url | relative_url }}" 
-               class="main-nav__link{% if current_path == nav_path or (nav_path == '/' and current_path == '/index') %} main-nav__link--active{% endif %}"
-               {% if current_path == nav_path or (nav_path == '/' and current_path == '/index') %}aria-current="page"{% endif %}>
-              {{ item.name }}
-            </a>
-          </li>
+          {% if item.subnav %}
+            <li class="main-nav__item main-nav__item--dropdown">
+              <a href="javascript:void(0)" 
+                 class="main-nav__link"
+                 role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                {{ item.name }}
+              </a>
+              <ul class="main-nav__dropdown-menu">
+                {% for subitem in item.subnav %}
+                  {% assign subnav_path = subitem.url | remove: '.html' %}
+                  <li class="main-nav__dropdown-item">
+                    <a href="{{ subitem.url | relative_url }}"
+                       class="main-nav__link{% if current_path == subnav_path %} main-nav__link--active{% endif %}"
+                       {% if current_path == subnav_path %}aria-current="page"{% endif %}>
+                      {{ subitem.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% else %}
+            <li class="main-nav__item">
+              <a href="{{ item.url | relative_url }}" 
+                 class="main-nav__link{% if current_path == nav_path or (nav_path == '/' and current_path == '/index') %} main-nav__link--active{% endif %}"
+                 {% if current_path == nav_path or (nav_path == '/' and current_path == '/index') %}aria-current="page"{% endif %}>
+                {{ item.name }}
+              </a>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
       
@@ -100,5 +124,21 @@
         }
       });
     }
+    
+    // Dropdown menu toggle for mobile
+    const dropdownTriggers = document.querySelectorAll('.main-nav__item--dropdown > .main-nav__link');
+    dropdownTriggers.forEach(trigger => {
+      trigger.addEventListener('click', function(e) {
+        // Only toggle on mobile
+        if (window.innerWidth < 768) {
+          e.preventDefault();
+          const dropdown = this.nextElementSibling;
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          
+          this.setAttribute('aria-expanded', !isExpanded);
+          dropdown.classList.toggle('main-nav__dropdown-menu--open');
+        }
+      });
+    });
   })();
 </script>

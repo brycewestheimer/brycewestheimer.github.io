@@ -2,13 +2,13 @@
 // Professional color scheme suitable for quantum chemistry/academic background
 
 :root {
-  // Primary colors - sophisticated blues and grays
-  --color-primary: #0366d6;
-  --color-primary-dark: #0056b3;
-  --color-primary-light: #2188ff;
-  --color-primary-rgb: 3, 102, 214;
-  --color-secondary: #6f42c1;
-  --color-accent: #28a745;
+  // Primary colors - deep professional blue and purple
+  --color-primary: #1e3a8a;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #3b82f6;
+  --color-primary-rgb: 30, 58, 138;
+  --color-secondary: #7c3aed;
+  --color-accent: #0891b2;
   
   // Status colors
   --color-success: #28a745;
@@ -22,31 +22,31 @@
   --color-info-bg: #d1ecf1;
   
   // Neutral colors
-  --color-text: #24292e;
-  --color-text-primary: #24292e;
-  --color-text-secondary: #586069;
-  --color-text-tertiary: #6a737d;
-  --color-text-muted: #6a737d;
+  --color-text: #0f172a;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-tertiary: #94a3b8;
+  --color-text-muted: #94a3b8;
   --color-bg: #ffffff;
   --color-bg-primary: #ffffff;
   --color-bg-primary-rgb: 255, 255, 255;
-  --color-bg-secondary: #f6f8fa;
-  --color-bg-tertiary: #fafbfc;
-  --color-border: #e1e4e8;
-  --color-border-light: #eaecef;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-light: #e2e8f0;
   
   // Dark theme colors
-  --color-bg-dark: #0d1117;
-  --color-bg-primary-dark: #0d1117;
-  --color-bg-primary-dark-rgb: 13, 17, 23;
-  --color-bg-secondary-dark: #161b22;
-  --color-bg-tertiary-dark: #21262d;
-  --color-text-dark: #f0f6fc;
-  --color-text-secondary-dark: #8b949e;
-  --color-border-dark: #30363d;
+  --color-bg-dark: #0f172a;
+  --color-bg-primary-dark: #0f172a;
+  --color-bg-primary-dark-rgb: 15, 23, 42;
+  --color-bg-secondary-dark: #1e293b;
+  --color-bg-tertiary-dark: #334155;
+  --color-text-dark: #f1f5f9;
+  --color-text-secondary-dark: #cbd5e1;
+  --color-border-dark: #334155;
   
   // Typography
-  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   
   // Spacing scale
@@ -68,10 +68,11 @@
   --border-radius-xl: 12px;
   
   // Shadows
-  --shadow-sm: 0 1px 0 rgba(27,31,35,0.04);
-  --shadow: 0 1px 3px rgba(27,31,35,0.12);
-  --shadow-md: 0 3px 6px rgba(27,31,35,0.15);
-  --shadow-lg: 0 8px 24px rgba(27,31,35,0.12);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 40px rgba(30, 58, 138, 0.1);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
   
   // Transitions
   --transition-fast: 0.1s ease;

@@ -1,0 +1,16 @@
+<section class="topic-section">
+  <h2>Skills & Technologies</h2>
+  
+  {% assign topic_skills = site.topics[page.topic_id].skills %}
+  {% if topic_skills and topic_skills.size > 0 %}
+    <div class="skills-tags">
+      {% for skill in topic_skills %}
+        <span class="tech-tag">{{ skill }}</span>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <p>Skills coming soon.</p>
+    </div>
+  {% endif %}
+</section>

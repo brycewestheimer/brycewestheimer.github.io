@@ -1,29 +1,101 @@
 {% include header.html %}
 
-<div class="sidebar-layout">
-  <div class="sidebar-layout__sidebar">
-    {% include masthead.html metadata=true %}
-  </div>
-
-  <div class="sidebar-layout__content">
-    <main id="main-content" class="main-content">
-      {% unless content == "" %}
-        <div class="section">
-          {{ content }}
+<div class="homepage">
+  {% include hero.html %}
+  
+  <!-- Topic Cards Section -->
+  <section class="topic-section section">
+    <div class="container">
+      <h2 class="section-title">Explore by Topic</h2>
+      <div class="topic-grid">
+        {% for topic in site.topics %}
+          {% include topic-card.html %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Projects Section -->
+  <section class="featured-section section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        {% if site.featured_projects %}
+          {% for project in site.featured_projects limit: 3 %}
+            <div class="project-card">
+              <div class="project-card__header">
+                <h3>
+                  <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
+                    {% octicon repo height:16 aria-hidden:true %}
+                    {{ project.name }}
+                  </a>
+                </h3>
+                {% if project.status %}
+                  <span class="tech-tag">{{ project.status }}</span>
+                {% endif %}
+              </div>
+              
+              <div class="project-card__description">
+                <p>{{ project.description }}</p>
+              </div>
+              
+              <div class="project-card__footer">
+                <div class="project-card__footer-left">
+                  {% if project.tech %}
+                    <span class="project-card__language">
+                      <span class="repo-language-color" style="background-color: var(--color-primary, #1e3a8a);" aria-hidden="true"></span>
+                      {{ project.tech }}
+                    </span>
+                  {% endif %}
+                </div>
+                
+                <div class="project-card__footer-right">
+                  <a href="{{ project.url }}" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+                    View project
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Core Expertise Section -->
+  <section class="expertise-section section">
+    <div class="container">
+      <h2 class="section-title">Core Expertise</h2>
+      <div class="expertise-grid">
+        <div class="expertise-card card">
+          <div class="card__header">
+            <h3>Fragment-Based Methods</h3>
+          </div>
+          <div class="card__content">
+            <p>MAP, adaptive QM/MM, subsystem-local SAPT for scalable quantum chemistry</p>
+          </div>
         </div>
-      {% endunless %}
-
-      {% include projects.html %}
-
-      {% if site.topics %}
-        {% include interests.html %}
-      {% endif %}
-
-      {% unless posts_total == 0 %}
-        {% include thoughts.html %}
-      {% endunless %}
-    </main>
-  </div>
+        
+        <div class="expertise-card card">
+          <div class="card__header">
+            <h3>GPU Acceleration</h3>
+          </div>
+          <div class="card__content">
+            <p>CUDA implementations, heterogeneous HPC, DOE-class platform optimization</p>
+          </div>
+        </div>
+        
+        <div class="expertise-card card">
+          <div class="card__header">
+            <h3>Scientific Software</h3>
+          </div>
+          <div class="card__content">
+            <p>Open-source libraries, GAMESS core development, performance-portable code</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 {% include footer.html %}

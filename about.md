@@ -53,6 +53,35 @@ Open science and mentorship are core to my work. I maintain public repositories 
 
 ---
 
+## Areas of Expertise
+
+My work spans multiple domains of scientific computing and software development:
+
+- **[Computational Chemistry](/topics/computational-chemistry/)** — Fragment-based methods, MAP, GAMESS development
+- **[Machine Learning & AI](/topics/ml-ai/)** — Method acceleration, uncertainty quantification, molecular design
+- **[High-Performance Computing](/topics/computational-chemistry/)** — GPU acceleration, MPI/OpenMP, DOE-scale deployments
+- **[Software Development](/topics/general/)** — Open-source tools, CI/CD, DevOps
+
+Each area represents a focused area of research and development. Explore the topic pages to see projects, publications, and skills in each domain.
+
+---
+
+## Other Interests
+
+Beyond my research and professional work, I maintain several hands-on technical interests that complement my scientific computing background:
+
+### 3D Modeling & Printing
+
+I use CAD software for designing and prototyping equipment, fixtures, and experimental apparatus. This hands-on approach helps me understand physical constraints that software must control, and provides practical experience in turning computational designs into physical reality.
+
+### Electronics
+
+Circuit design and embedded systems work complements my understanding of the hardware that scientific software runs on. From understanding signal processing in data acquisition to designing interfaces for experimental equipment, electronics knowledge helps bridge the gap between code and physical measurement.
+
+These interests reflect my broader philosophy that software development—especially for scientific computing—benefits from understanding the full stack, from underlying hardware and physical implementation up through high-level algorithms and user interfaces.
+
+---
+
 ## Let's Connect
 
-Curious about collaboration, code, or speaking opportunities? Reach out via the [contact page](/contact/), connect on [LinkedIn](https://linkedin.com/in/{{ site.social_media.linkedin }}), or drop a note on [GitHub](https://github.com/brycewestheimer).
+Curious about collaboration, code, or speaking opportunities? Reach out via the [contact page](/contact/), connect on [LinkedIn](https://linkedin.com/in/{{ site.social_media.linkedin }}), or drop a note on [GitHub](https://github.com/{{ site.author.github }}).
