@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Development/planning files
+TODO.md
+handoff.md
+implementation_plan*.md
