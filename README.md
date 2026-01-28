@@ -1,43 +1,53 @@
-# Astro Starter Kit: Minimal
+# Bryce M. Westheimer — Personal Website
 
-```sh
-npm create astro@latest -- --template minimal
+[![Deploy to GitHub Pages](https://github.com/brycewestheimer/brycewestheimer.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/brycewestheimer/brycewestheimer.github.io/actions/workflows/deploy.yml)
+
+Personal website and portfolio for **Bryce M. Westheimer, PhD** — Scientific Software Developer & Researcher specializing in computational chemistry, high-performance computing, and scientific software engineering.
+
+🌐 **Live Site:** [brycewestheimer.github.io](https://brycewestheimer.github.io)
+
+## Tech Stack
+
+- **Framework:** [Astro](https://astro.build) v5.16
+- **Styling:** [Tailwind CSS](https://tailwindcss.com) v4
+- **Deployment:** GitHub Pages via GitHub Actions
+- **Content:** Markdown with Astro Content Collections
+
+## Features
+
+- ⚡ Fast, static site generation with Astro
+- 🌙 Dark/Light mode with system preference detection
+- 📱 Fully responsive design
+- 📝 Blog and tutorials with Markdown content collections
+- 🎨 Custom design system with deep teal/gold color palette
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/      # Reusable UI components
+├── content/         # Blog posts and tutorials (Markdown)
+├── layouts/         # Page layouts
+├── pages/           # Route pages
+└── styles/          # Global styles and design system
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## License
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+© 2026 Bryce M. Westheimer. All rights reserved.

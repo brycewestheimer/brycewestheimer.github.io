@@ -5,54 +5,91 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 
-const flagshipProjects = [
+// Open Source Contributions
+const openSourceProjects = [
   {
-    title: "libfrag — Fragment-Based Method Sandbox",
-    description: "A modular playground for experimenting with fragment-based ab initio algorithms, designed to prototype ideas before they land in production GAMESS releases. Current efforts focus on multi-layer adaptive partitioning (MAP) analysis utilities and accelerator-friendly data layouts.",
-    techs: ["Python", "C++", "CMake"],
+    title: "QCManyBody",
+    description: "Fork of MolSSI's QCManyBody library with extended functionality for many-body expansion calculations and fragment-based methods.",
+    techs: ["Python", "MBE", "QCSchema"],
     status: "Active" as const,
-    github: "https://github.com/brycewestheimer/libfrag"
+    github: "https://github.com/brycewestheimer/QCManyBody"
   },
   {
-    title: "public_libaccefp — Accelerated EFP Preview",
-    description: "An open slice of the Accelerated EFP library showcasing GPU-aware kernels developed through collaborations with Ames National Laboratory. The preview highlights data structures and API patterns that informed the EFP chapter in Comprehensive Computational Chemistry (2024).",
-    techs: ["C++", "CUDA", "Fortran"],
-    status: "Preview" as const,
-    github: "https://github.com/brycewestheimer/public_libaccefp"
+    title: "GAMESS",
+    description: "Core contributor to the GAMESS fragmentation roadmap. Current work targets MAP enablement, rigorous covalent fragment treatments, and accelerator portability.",
+    techs: ["Fortran", "C", "CUDA", "MPI"],
+    status: "Active" as const,
+    href: "https://www.msg.chem.iastate.edu/gamess/"
+  }
+];
+
+// Scientific Computing
+const scientificProjects = [
+  {
+    title: "autofragment",
+    description: "Automatic molecular fragmentation library for fragment-based quantum chemistry calculations. Generates fragment definitions from molecular structures.",
+    techs: ["Python", "Fragmentation", "QCSchema"],
+    status: "Active" as const,
+    github: "https://github.com/brycewestheimer/autofragment"
   },
   {
-    title: "public_libaccsapt — Accelerated SAPT Components",
-    description: "A reference implementation of subsystem-local SAPT routines, capturing the exchange-repulsion ideas featured in the ACS Fall 2024 presentation. Documents parallelization strategies for heterogeneous CPU/GPU platforms.",
-    techs: ["C++", "OpenMP", "MPI"],
-    status: "Preview" as const,
-    github: "https://github.com/brycewestheimer/public_libaccsapt"
-  },
-  {
-    title: "public_qccg — Quantum Chemistry Code Generator",
-    description: "A template-driven code generator that produces tightly optimized kernels for GAMESS-style workflows. Tracks interface evolution while associated publications move through review.",
-    techs: ["C++", "Python"],
-    status: "Development" as const,
-    github: "https://github.com/brycewestheimer/public_qccg"
-  },
-  {
-    title: "RCChem — Rust Computational Chemistry",
+    title: "RCChem",
     description: "A modular quantum chemistry package written in Rust, featuring DFT calculations, integral transforms, and post-SCF methods. Designed for performance and correctness.",
     techs: ["Rust", "DFT", "HPC"],
     status: "Development" as const,
     github: "https://github.com/brycewestheimer/rcchem"
+  },
+  {
+    title: "QCBase",
+    description: "Foundational library for quantum chemistry applications, providing core data structures, algorithms, and utilities for electronic structure calculations.",
+    techs: ["C++", "Python", "CMake"],
+    status: "Development" as const,
+    github: "https://github.com/brycewestheimer/QCBase"
   }
 ];
 
-const gamessProject = {
-  title: "GAMESS Fragmentation Modernization",
-  description: "Core contributor to the GAMESS fragmentation roadmap described in JCTC (2023) and JCP (2023). Current work targets MAP enablement, rigorous covalent fragment treatments, and accelerator portability.",
-  techs: ["Fortran", "C", "CUDA"],
-  status: "Active" as const,
-  href: "https://www.msg.chem.iastate.edu/gamess/"
-};
+// AI/ML
+const aimlProjects = [
+  {
+    title: "Equivariant Residual GNNs",
+    description: "Graph neural network architecture with equivariant residual connections for molecular property prediction. Leverages geometric deep learning for chemical systems.",
+    techs: ["PyTorch", "PyG", "E(3)-Equivariant"],
+    status: "Development" as const,
+    github: "#" // Placeholder
+  },
+  {
+    title: "Reference Anchored Residual NNs",
+    description: "Neural network architecture using reference-anchored residual learning for improved transferability in molecular simulations and property prediction.",
+    techs: ["PyTorch", "ML", "Chemistry"],
+    status: "Development" as const,
+    github: "#" // Placeholder
+  }
+];
+
+// Software Engineering
+const softwareProjects = [
+  {
+    title: "Personal Website",
+    description: "This portfolio website — built with Astro and Tailwind CSS. Features dark mode, responsive design, blog/tutorial content collections, and CI/CD deployment.",
+    techs: ["Astro", "Tailwind CSS", "GitHub Actions"],
+    status: "Active" as const,
+    github: "https://github.com/brycewestheimer/brycewestheimer.github.io"
+  }
+];
+
+// Data Analysis (Placeholder)
+const dataProjects = [
+  {
+    title: "Coming Soon",
+    description: "Data analysis and visualization project currently in development. Check back for updates on interactive dashboards and scientific data tools.",
+    techs: ["Python", "Visualization"],
+    status: "Planned" as const,
+    github: "#" // Placeholder
+  }
+];
 ---
 
-<BaseLayout title="Projects" description="A showcase of computational chemistry and software development projects">
+<BaseLayout title="Projects" description="A showcase of computational chemistry, AI/ML, and software development projects">
   <Header slot="header" />
 
   <!-- Page Header -->
@@ -60,72 +97,103 @@ const gamessProject = {
     <div class="container-main">
       <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Projects</h1>
       <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
-        A showcase of computational chemistry and software development work, 
-        from research prototypes to production-ready tools.
+        A showcase of work spanning scientific computing, AI/ML, open source contributions, 
+        and software engineering — from research prototypes to production-ready tools.
       </p>
     </div>
   </section>
 
-  <!-- GAMESS Featured -->
+  <!-- Open Source Contributions -->
   <section class="py-16">
     <div class="container-main">
-      <h2 class="section-title mb-6">Featured Collaboration</h2>
-      <div class="max-w-2xl">
-        <ProjectCard {...gamessProject} />
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+          <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h2 class="section-title">Open Source Contributions</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- Flagship Projects -->
-  <section class="py-16 bg-surface-100 dark:bg-surface-900">
-    <div class="container-main">
-      <h2 class="section-title mb-8">Open Source Projects</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {flagshipProjects.map((project) => (
+      <div class="grid md:grid-cols-2 gap-6">
+        {openSourceProjects.map((project) => (
           <ProjectCard {...project} />
         ))}
       </div>
     </div>
   </section>
 
-  <!-- How Projects Fit Together -->
+  <!-- Scientific Computing -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900 flex items-center justify-center">
+          <svg class="w-5 h-5 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        </div>
+        <h2 class="section-title">Scientific Computing</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {scientificProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AI/ML -->
   <section class="py-16">
     <div class="container-main">
-      <h2 class="section-title mb-8">How These Projects Connect</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card">
-          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">MAP & Fragment Workflows</h3>
-          <p class="text-sm text-surface-600 dark:text-surface-400">
-            libfrag prototypes feed directly into GAMESS feature branches and collaborative MAP benchmarks.
-          </p>
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+          <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
         </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-lg bg-accent-100 dark:bg-accent-900 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">Accelerated EFP/SAPT</h3>
-          <p class="text-sm text-surface-600 dark:text-surface-400">
-            GPU-oriented kernels backing MolSSI fellowship milestones and ACS 2024 talks.
-          </p>
+        <h2 class="section-title">AI / Machine Learning</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {aimlProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Software Engineering -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+          <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
         </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">Code Generation</h3>
-          <p class="text-sm text-surface-600 dark:text-surface-400">
-            public_qccg underpins automation to keep kernels consistent across CPU and GPU targets.
-          </p>
+        <h2 class="section-title">Software Engineering</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {softwareProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Analysis -->
+  <section class="py-16">
+    <div class="container-main">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center">
+          <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
         </div>
+        <h2 class="section-title">Data Analysis & Visualization</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {dataProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
       </div>
     </div>
   </section>
@@ -133,9 +201,9 @@ const gamessProject = {
   <!-- Get Involved -->
   <section class="py-16 bg-primary-600 dark:bg-primary-800">
     <div class="container-main text-center">
-      <h2 class="text-2xl font-bold text-white mb-4">Want to Contribute?</h2>
+      <h2 class="text-2xl font-bold text-white mb-4">Want to Collaborate?</h2>
       <p class="text-primary-100 mb-6 max-w-xl mx-auto">
-        Check open issues in each repository or reach out to discuss collaboration opportunities.
+        Check open issues in each repository or reach out to discuss research and development opportunities.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="https://github.com/brycewestheimer" target="_blank" rel="noopener noreferrer" class="btn btn-accent">

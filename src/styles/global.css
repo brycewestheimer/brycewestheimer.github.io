@@ -104,16 +104,32 @@
     color: var(--color-surface-100);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 600;
     line-height: 1.2;
   }
 
-  h1 { font-size: var(--text-4xl); }
-  h2 { font-size: var(--text-3xl); }
-  h3 { font-size: var(--text-2xl); }
-  h4 { font-size: var(--text-xl); }
+  h1 {
+    font-size: var(--text-4xl);
+  }
+
+  h2 {
+    font-size: var(--text-3xl);
+  }
+
+  h3 {
+    font-size: var(--text-2xl);
+  }
+
+  h4 {
+    font-size: var(--text-xl);
+  }
 
   a {
     color: var(--color-primary-600);
@@ -132,13 +148,15 @@
     color: var(--color-primary-200);
   }
 
-  code, pre {
+  code,
+  pre {
     font-family: var(--font-mono);
   }
 }
 
 /* Component layer */
 @layer components {
+
   /* Container */
   .container-main {
     width: 100%;
@@ -275,26 +293,28 @@
     background-color: oklch(0.95 0.08 85);
     color: oklch(0.45 0.12 65);
   }
+
+  .badge-planned {
+    background-color: oklch(0.92 0 0);
+    color: oklch(0.45 0 0);
+  }
 }
 
 /* Utility layer */
 @layer utilities {
+
   /* Gradient backgrounds */
   .gradient-hero {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary-700) 0%,
-      var(--color-primary-500) 50%,
-      var(--color-primary-600) 100%
-    );
+    background: linear-gradient(135deg,
+        var(--color-primary-700) 0%,
+        var(--color-primary-500) 50%,
+        var(--color-primary-600) 100%);
   }
 
   .gradient-text {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary-500) 0%,
-      var(--color-accent-500) 100%
-    );
+    background: linear-gradient(135deg,
+        var(--color-primary-500) 0%,
+        var(--color-accent-500) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -325,8 +345,13 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {
@@ -334,6 +359,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -341,7 +367,14 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }

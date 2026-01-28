@@ -8,25 +8,25 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const featuredProjects = [
   {
+    title: "GAMESS",
+    description: "Core contributor to GAMESS fragmentation development. Focus on MAP enablement and accelerator portability.",
+    techs: ["Fortran", "CUDA", "MPI"],
+    status: "Active" as const,
+    href: "https://www.msg.chem.iastate.edu/gamess/",
+  },
+  {
     title: "RCChem",
-    description: "A modular quantum chemistry package written in Rust, featuring DFT calculations, integral transforms, and post-SCF methods.",
+    description: "A modular quantum chemistry package in Rust with DFT, integral transforms, and post-SCF methods.",
     techs: ["Rust", "DFT", "HPC"],
     status: "Development" as const,
     github: "https://github.com/brycewestheimer/rcchem",
   },
   {
-    title: "GAMESS Development",
-    description: "Contributions to the General Atomic and Molecular Electronic Structure System for computational chemistry.",
-    techs: ["Fortran", "C++", "MPI"],
-    status: "Active" as const,
-    href: "https://www.msg.chem.iastate.edu/gamess/",
-  },
-  {
-    title: "Scientific Python Tools",
-    description: "A collection of Python utilities for data analysis, visualization, and computational workflows.",
-    techs: ["Python", "NumPy", "SciPy"],
-    status: "Active" as const,
-    github: "https://github.com/brycewestheimer",
+    title: "Equivariant GNNs",
+    description: "Graph neural networks with equivariant residual connections for molecular property prediction.",
+    techs: ["PyTorch", "PyG", "E(3)"],
+    status: "Development" as const,
+    github: "#",
   },
 ];
 ---
