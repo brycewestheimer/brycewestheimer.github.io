@@ -1,0 +1,117 @@
+---
+import '../../styles/global.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection('tutorials');
+  return tutorials.map((tutorial) => ({
+    params: { slug: tutorial.slug },
+    props: { tutorial },
+  }));
+}
+
+const { tutorial } = Astro.props;
+const { Content } = await tutorial.render();
+
+const levelColors = {
+  beginner: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
+  intermediate: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300',
+  advanced: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
+};
+---
+
+<BaseLayout title={tutorial.data.title} description={tutorial.data.description}>
+  <Header slot="header" />
+
+  <article class="pt-28 pb-16">
+    <div class="container-main">
+      <!-- Tutorial Header -->
+      <header class="max-w-3xl mx-auto mb-12">
+        <a 
+          href="/tutorials"
+          class="inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 mb-4"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Tutorials
+        </a>
+        <h1 class="text-3xl md:text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">
+          {tutorial.data.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4">
+          {tutorial.data.level && (
+            <span class={`text-sm font-medium px-3 py-1 rounded-full ${levelColors[tutorial.data.level]}`}>
+              {tutorial.data.level.charAt(0).toUpperCase() + tutorial.data.level.slice(1)}
+            </span>
+          )}
+          {tutorial.data.tags && tutorial.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {tutorial.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </header>
+
+      <!-- Tutorial Content -->
+      <div class="max-w-3xl mx-auto prose prose-lg prose-surface dark:prose-invert prose-headings:font-semibold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-code:text-primary-600 dark:prose-code:text-primary-400">
+        <Content />
+      </div>
+
+      <!-- Tutorial Footer -->
+      <footer class="max-w-3xl mx-auto mt-12 pt-8 border-t border-surface-200 dark:border-surface-800">
+        <div class="flex justify-between items-center">
+          <a 
+            href="/tutorials"
+            class="btn btn-secondary"
+          >
+            ← All Tutorials
+          </a>
+          <a 
+            href="/contact"
+            class="text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
+          >
+            Questions? Get in touch →
+          </a>
+        </div>
+      </footer>
+    </div>
+  </article>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .prose pre {
+    background-color: var(--color-surface-900);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    overflow-x: auto;
+  }
+  
+  .dark .prose pre {
+    background-color: var(--color-surface-800);
+    border: 1px solid var(--color-surface-700);
+  }
+  
+  .prose code {
+    background-color: var(--color-surface-100);
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875em;
+  }
+  
+  .dark .prose code {
+    background-color: var(--color-surface-800);
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+</style>

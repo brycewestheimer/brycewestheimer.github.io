@@ -1,0 +1,161 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const coreThemes = [
+  {
+    title: "Multi-layer Adaptive Partitioning (MAP)",
+    description: "Extending MAP approaches to treat complex reactive environments while maintaining chemical accuracy.",
+    points: [
+      "Designing hierarchical partitioning strategies that balance subsystem fidelity and computational cost",
+      "Building reusable MAP analysis workflows for collaborators"
+    ]
+  },
+  {
+    title: "Fragment-based Electronic Structure at Scale",
+    description: "Advancing interfragment coupling models for covalent systems.",
+    points: [
+      "Rigorous treatments published in J. Phys. Chem. A and J. Chem. Phys.",
+      "Modernizing GAMESS fragmentation modules for GPU-enabled supercomputers",
+      "Maintaining libfrag as an open-source sandbox for new algorithms"
+    ]
+  },
+  {
+    title: "High-Performance Computing & Accelerator Enablement",
+    description: "Optimizing quantum chemistry kernels for heterogeneous CPU/GPU architectures.",
+    points: [
+      "MPI/OpenMP hybrids and CUDA implementations",
+      "Benchmarking on DOE-class systems with Ames National Laboratory",
+      "Ensuring novel methods land in production-quality code bases"
+    ]
+  }
+];
+
+const activeProjects = [
+  {
+    title: "Subsystem-local SAPT acceleration",
+    description: "Applying resolution-of-identity techniques to reduce the cost of exchange-repulsion terms."
+  },
+  {
+    title: "Accelerated MAP workflow",
+    description: "Co-developing GPU-ready MAP components targeting realistic condensed-phase simulations."
+  },
+  {
+    title: "GAMESS extreme-scale modernization",
+    description: "Deploying new fragmentation kernels across DOE leadership-class machines."
+  }
+];
+---
+
+<BaseLayout title="Research" description="Exploring quantum chemistry method development and high-performance computing">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Research</h1>
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
+        Integrating quantum chemistry method development with performance-portable software 
+        for accelerator-heavy computing environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Themes -->
+  <section class="py-16">
+    <div class="container-main">
+      <h2 class="section-title mb-8">Core Research Themes</h2>
+      <div class="grid gap-8">
+        {coreThemes.map((theme) => (
+          <div class="card">
+            <h3 class="text-xl font-semibold text-surface-900 dark:text-surface-100 mb-2">
+              {theme.title}
+            </h3>
+            <p class="text-surface-600 dark:text-surface-400 mb-4">
+              {theme.description}
+            </p>
+            <ul class="space-y-2">
+              {theme.points.map((point) => (
+                <li class="flex items-start gap-2 text-sm text-surface-600 dark:text-surface-400">
+                  <svg class="w-5 h-5 flex-shrink-0 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Active Projects -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h2 class="section-title mb-8">Active Projects</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {activeProjects.map((project) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-2">
+              {project.title}
+            </h3>
+            <p class="text-sm text-surface-600 dark:text-surface-400">
+              {project.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborations -->
+  <section class="py-16">
+    <div class="container-main">
+      <h2 class="section-title mb-8">Collaborations & Partnerships</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card text-center">
+          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">
+            University of Colorado Denver
+          </h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">
+            Guidez Lab & Lin Group — multiscale methods and computational chemistry applications
+          </p>
+        </div>
+        <div class="card text-center">
+          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">
+            Ames National Laboratory
+          </h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">
+            GAMESS development, exascale readiness, and novel architecture studies
+          </p>
+        </div>
+        <div class="card text-center">
+          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">
+            MolSSI Community
+          </h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">
+            Best practices for sustainable scientific software and mentorship
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary-600 dark:bg-primary-800">
+    <div class="container-main text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Interested in Collaboration?</h2>
+      <p class="text-primary-100 mb-6 max-w-xl mx-auto">
+        Reach out to discuss research opportunities or learn more about these projects.
+      </p>
+      <a href="/contact" class="btn btn-accent">
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

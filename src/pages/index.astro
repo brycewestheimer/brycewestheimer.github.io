@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const featuredProjects = [
+  {
+    title: "RCChem",
+    description: "A modular quantum chemistry package written in Rust, featuring DFT calculations, integral transforms, and post-SCF methods.",
+    techs: ["Rust", "DFT", "HPC"],
+    status: "Development" as const,
+    github: "https://github.com/brycewestheimer/rcchem",
+  },
+  {
+    title: "GAMESS Development",
+    description: "Contributions to the General Atomic and Molecular Electronic Structure System for computational chemistry.",
+    techs: ["Fortran", "C++", "MPI"],
+    status: "Active" as const,
+    href: "https://www.msg.chem.iastate.edu/gamess/",
+  },
+  {
+    title: "Scientific Python Tools",
+    description: "A collection of Python utilities for data analysis, visualization, and computational workflows.",
+    techs: ["Python", "NumPy", "SciPy"],
+    status: "Active" as const,
+    github: "https://github.com/brycewestheimer",
+  },
+];
+---
+
+<BaseLayout title="Home">
+  <Header slot="header" />
+  
+  <Hero 
+    title="Bryce Westheimer"
+    subtitle="Scientific Software Developer & Researcher specializing in computational chemistry, high-performance computing, and scientific software engineering."
+    primaryCta={{ text: "View Projects", href: "/projects" }}
+    secondaryCta={{ text: "Read Publications", href: "/publications" }}
+  />
+
+  <!-- Featured Projects Section -->
+  <section class="py-20">
+    <div class="container-main">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="text-surface-600 dark:text-surface-400">
+            Selected work in computational chemistry and scientific software
+          </p>
+        </div>
+        <a 
+          href="/projects" 
+          class="hidden sm:flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+        >
+          View all projects
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+
+      <div class="sm:hidden mt-6 text-center">
+        <a 
+          href="/projects" 
+          class="btn btn-secondary"
+        >
+          View all projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Blog Preview (optional - placeholder) -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="section-title">Latest Insights</h2>
+        <p class="text-surface-600 dark:text-surface-400 mb-8">
+          Technical articles on computational chemistry, software development, and scientific computing
+        </p>
+        <a href="/blog" class="btn btn-primary">
+          Browse Articles
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

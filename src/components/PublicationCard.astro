@@ -1,0 +1,45 @@
+---
+interface Publication {
+  authors: string;
+  title: string;
+  journal: string;
+  doi?: string;
+  highlights?: string;
+}
+
+interface Props {
+  publication: Publication;
+}
+
+const { publication } = Astro.props;
+---
+
+<article class="card">
+  <p class="text-sm text-surface-600 dark:text-surface-400 mb-2">
+    {publication.authors}
+  </p>
+  <h3 class="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-2">
+    {publication.title}
+  </h3>
+  <p class="text-sm text-primary-600 dark:text-primary-400 mb-3">
+    {publication.journal}
+  </p>
+  {publication.highlights && (
+    <p class="text-sm text-surface-600 dark:text-surface-400 mb-4 italic">
+      {publication.highlights}
+    </p>
+  )}
+  {publication.doi && (
+    <a 
+      href={`https://doi.org/${publication.doi}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+      DOI: {publication.doi}
+    </a>
+  )}
+</article>

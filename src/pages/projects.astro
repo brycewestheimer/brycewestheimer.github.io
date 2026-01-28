@@ -1,0 +1,152 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const flagshipProjects = [
+  {
+    title: "libfrag — Fragment-Based Method Sandbox",
+    description: "A modular playground for experimenting with fragment-based ab initio algorithms, designed to prototype ideas before they land in production GAMESS releases. Current efforts focus on multi-layer adaptive partitioning (MAP) analysis utilities and accelerator-friendly data layouts.",
+    techs: ["Python", "C++", "CMake"],
+    status: "Active" as const,
+    github: "https://github.com/brycewestheimer/libfrag"
+  },
+  {
+    title: "public_libaccefp — Accelerated EFP Preview",
+    description: "An open slice of the Accelerated EFP library showcasing GPU-aware kernels developed through collaborations with Ames National Laboratory. The preview highlights data structures and API patterns that informed the EFP chapter in Comprehensive Computational Chemistry (2024).",
+    techs: ["C++", "CUDA", "Fortran"],
+    status: "Preview" as const,
+    github: "https://github.com/brycewestheimer/public_libaccefp"
+  },
+  {
+    title: "public_libaccsapt — Accelerated SAPT Components",
+    description: "A reference implementation of subsystem-local SAPT routines, capturing the exchange-repulsion ideas featured in the ACS Fall 2024 presentation. Documents parallelization strategies for heterogeneous CPU/GPU platforms.",
+    techs: ["C++", "OpenMP", "MPI"],
+    status: "Preview" as const,
+    github: "https://github.com/brycewestheimer/public_libaccsapt"
+  },
+  {
+    title: "public_qccg — Quantum Chemistry Code Generator",
+    description: "A template-driven code generator that produces tightly optimized kernels for GAMESS-style workflows. Tracks interface evolution while associated publications move through review.",
+    techs: ["C++", "Python"],
+    status: "Development" as const,
+    github: "https://github.com/brycewestheimer/public_qccg"
+  },
+  {
+    title: "RCChem — Rust Computational Chemistry",
+    description: "A modular quantum chemistry package written in Rust, featuring DFT calculations, integral transforms, and post-SCF methods. Designed for performance and correctness.",
+    techs: ["Rust", "DFT", "HPC"],
+    status: "Development" as const,
+    github: "https://github.com/brycewestheimer/rcchem"
+  }
+];
+
+const gamessProject = {
+  title: "GAMESS Fragmentation Modernization",
+  description: "Core contributor to the GAMESS fragmentation roadmap described in JCTC (2023) and JCP (2023). Current work targets MAP enablement, rigorous covalent fragment treatments, and accelerator portability.",
+  techs: ["Fortran", "C", "CUDA"],
+  status: "Active" as const,
+  href: "https://www.msg.chem.iastate.edu/gamess/"
+};
+---
+
+<BaseLayout title="Projects" description="A showcase of computational chemistry and software development projects">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Projects</h1>
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
+        A showcase of computational chemistry and software development work, 
+        from research prototypes to production-ready tools.
+      </p>
+    </div>
+  </section>
+
+  <!-- GAMESS Featured -->
+  <section class="py-16">
+    <div class="container-main">
+      <h2 class="section-title mb-6">Featured Collaboration</h2>
+      <div class="max-w-2xl">
+        <ProjectCard {...gamessProject} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Flagship Projects -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h2 class="section-title mb-8">Open Source Projects</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {flagshipProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How Projects Fit Together -->
+  <section class="py-16">
+    <div class="container-main">
+      <h2 class="section-title mb-8">How These Projects Connect</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card">
+          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">MAP & Fragment Workflows</h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">
+            libfrag prototypes feed directly into GAMESS feature branches and collaborative MAP benchmarks.
+          </p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-lg bg-accent-100 dark:bg-accent-900 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">Accelerated EFP/SAPT</h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">
+            GPU-oriented kernels backing MolSSI fellowship milestones and ACS 2024 talks.
+          </p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-surface-900 dark:text-surface-100 mb-2">Code Generation</h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">
+            public_qccg underpins automation to keep kernels consistent across CPU and GPU targets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved -->
+  <section class="py-16 bg-primary-600 dark:bg-primary-800">
+    <div class="container-main text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Want to Contribute?</h2>
+      <p class="text-primary-100 mb-6 max-w-xl mx-auto">
+        Check open issues in each repository or reach out to discuss collaboration opportunities.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://github.com/brycewestheimer" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+          View on GitHub
+        </a>
+        <a href="/contact" class="btn bg-white/10 text-white border-2 border-white/30 hover:bg-white/20">
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

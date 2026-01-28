@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="CV" description="Curriculum Vitae and professional background">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Curriculum Vitae</h1>
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
+        Download my complete CV or browse key highlights below.
+      </p>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="py-16">
+    <div class="container-main">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="card p-8">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+            <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-surface-900 dark:text-surface-100 mb-4">
+            Download CV
+          </h2>
+          <p class="text-surface-600 dark:text-surface-400 mb-6">
+            Get my complete curriculum vitae with detailed experience, publications, and skills.
+          </p>
+          <a 
+            href="/cv.pdf" 
+            download
+            class="btn btn-primary"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download PDF
+          </a>
+          <p class="text-sm text-surface-500 mt-4">
+            PDF coming soon. For now, please <a href="/contact" class="text-primary-600 hover:underline dark:text-primary-400">contact me</a> to request a copy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Overview -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h2 class="section-title mb-8 text-center">Quick Overview</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="card text-center">
+          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">10+</div>
+          <p class="text-surface-600 dark:text-surface-400">Publications</p>
+        </div>
+        <div class="card text-center">
+          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">8+</div>
+          <p class="text-surface-600 dark:text-surface-400">Years Experience</p>
+        </div>
+        <div class="card text-center">
+          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">5+</div>
+          <p class="text-surface-600 dark:text-surface-400">Awards & Fellowships</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section class="py-16">
+    <div class="container-main text-center">
+      <h2 class="section-title mb-6">More Information</h2>
+      <p class="text-surface-600 dark:text-surface-400 mb-8 max-w-xl mx-auto">
+        For detailed information about my background, please explore these pages:
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/about" class="btn btn-secondary">About Me</a>
+        <a href="/publications" class="btn btn-secondary">Publications</a>
+        <a href="/projects" class="btn btn-secondary">Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

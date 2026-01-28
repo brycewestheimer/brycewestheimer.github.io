@@ -1,0 +1,75 @@
+---
+import '../../styles/global.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const tutorials = (await getCollection('tutorials'))
+  .filter(t => !t.data.draft);
+
+const levelColors = {
+  beginner: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
+  intermediate: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300',
+  advanced: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
+};
+---
+
+<BaseLayout title="Tutorials" description="Guides and walkthroughs for computational chemistry and programming">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Tutorials</h1>
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
+        Step-by-step guides on quantum chemistry, GPU programming, and scientific software development.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tutorials Grid -->
+  <section class="py-16">
+    <div class="container-main">
+      {tutorials.length === 0 ? (
+        <p class="text-surface-600 dark:text-surface-400 text-center py-12">
+          Tutorials coming soon!
+        </p>
+      ) : (
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl">
+          {tutorials.map((tutorial) => (
+            <a 
+              href={`/tutorials/${tutorial.slug}`}
+              class="card group"
+            >
+              <div class="flex items-center gap-2 mb-3">
+                {tutorial.data.level && (
+                  <span class={`text-xs font-medium px-2 py-1 rounded-full ${levelColors[tutorial.data.level]}`}>
+                    {tutorial.data.level.charAt(0).toUpperCase() + tutorial.data.level.slice(1)}
+                  </span>
+                )}
+              </div>
+              <h2 class="text-xl font-semibold text-surface-900 dark:text-surface-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+                {tutorial.data.title}
+              </h2>
+              {tutorial.data.description && (
+                <p class="text-surface-600 dark:text-surface-400 mb-4">
+                  {tutorial.data.description}
+                </p>
+              )}
+              {tutorial.data.tags && tutorial.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {tutorial.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import '../../styles/global.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<BaseLayout title="Blog" description="Technical articles on computational chemistry, software development, and scientific computing">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Blog</h1>
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
+        Technical articles on computational chemistry, software development, and scientific computing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="py-16">
+    <div class="container-main">
+      {posts.length === 0 ? (
+        <p class="text-surface-600 dark:text-surface-400 text-center py-12">
+          No posts yet. Check back soon!
+        </p>
+      ) : (
+        <div class="space-y-8 max-w-3xl">
+          {posts.map((post) => (
+            <article class="card">
+              <div class="flex items-center gap-2 mb-2">
+                <time class="text-sm text-surface-500" datetime={post.data.date.toISOString()}>
+                  {formatDate(post.data.date)}
+                </time>
+              </div>
+              <h2 class="text-xl font-semibold text-surface-900 dark:text-surface-100 mb-2">
+                <a 
+                  href={`/blog/${post.slug}`}
+                  class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+              {post.data.description && (
+                <p class="text-surface-600 dark:text-surface-400 mb-4">
+                  {post.data.description}
+                </p>
+              )}
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {post.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

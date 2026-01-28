@@ -1,0 +1,136 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+
+const publications = {
+  "2024": [
+    {
+      authors: "Peng Xu, Bryce M. Westheimer, Megan Schlinsog, et al.",
+      title: "The Effective Fragment Potential: An Ab Initio Force Field",
+      journal: "Comprehensive Computational Chemistry (Elsevier)",
+      doi: "10.1016/B978-0-12-821978-2.00141-0",
+      highlights: "Summarizes the modern EFP framework, including recent GPU-portable implementations."
+    }
+  ],
+  "2023": [
+    {
+      authors: "Jorge L. Galvez Vallejo, Calum Snowdon, Ryan Stocks, ... Bryce M. Westheimer, et al.",
+      title: "Toward an extreme-scale electronic structure system",
+      journal: "The Journal of Chemical Physics, 159(4), 044112",
+      doi: "10.1063/5.0156399",
+      highlights: "Introduces EXESS platform with >94% efficiency on 27,600 GPUs."
+    },
+    {
+      authors: "Federico Zahariev, Peng Xu, Bryce M. Westheimer, et al.",
+      title: "The General Atomic and Molecular Electronic Structure System (GAMESS): Novel Methods on Novel Architectures",
+      journal: "Journal of Chemical Theory and Computation, 19(20), 7031–7055",
+      doi: "10.1021/acs.jctc.3c00379",
+      highlights: "Documents GAMESS modernization, GPU-accelerated kernels, and HPC interoperability."
+    }
+  ],
+  "2022": [
+    {
+      authors: "Bryce M. Westheimer, Mark S. Gordon",
+      title: "General, Rigorous Approach for the Treatment of Interfragment Covalent Bonds",
+      journal: "The Journal of Physical Chemistry A, 126(39), 6995–7006",
+      doi: "10.1021/acs.jpca.2c04015",
+      highlights: "Formally exact treatment for covalent connections, eliminating ad hoc link atom schemes."
+    }
+  ],
+  "2021": [
+    {
+      authors: "Bryce M. Westheimer, Mark S. Gordon",
+      title: "Scalable ab initio fragmentation methods based on a truncated expansion of the non-orthogonal molecular orbital model",
+      journal: "The Journal of Chemical Physics, 155(15), 154101",
+      doi: "10.1063/5.0064864",
+      highlights: "Derives X-NOMO hierarchy with near-linear scaling for large molecular clusters."
+    }
+  ],
+  "2020": [
+    {
+      authors: "Giuseppe M. J. Barca, Colleen Bertoni, ... Bryce M. Westheimer, et al.",
+      title: "Recent developments in the general atomic and molecular electronic structure system",
+      journal: "The Journal of Chemical Physics, 152(15), 154102",
+      doi: "10.1063/5.0005188",
+      highlights: "Reviews major GAMESS advances including EFP/FMO enhancements and hybrid parallelism."
+    },
+    {
+      authors: "Mark S. Gordon, Giuseppe M. J. Barca, ... Bryce Westheimer",
+      title: "Novel Computer Architectures and Quantum Chemistry",
+      journal: "The Journal of Physical Chemistry A, 124(23), 4557–4582",
+      doi: "10.1021/acs.jpca.0c02249",
+      highlights: "Surveys quantum chemistry software evolution on emerging hardware architectures."
+    }
+  ]
+};
+
+const years = Object.keys(publications).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<BaseLayout title="Publications" description="Peer-reviewed publications and research contributions">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Publications</h1>
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
+        Peer-reviewed work focused on fragment-based quantum chemistry, extreme-scale electronic structure, 
+        and the software that supports those calculations.
+      </p>
+      <a 
+        href="https://scholar.google.com/citations?user=brycewestheimer"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 mt-4 text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+        </svg>
+        View on Google Scholar
+      </a>
+    </div>
+  </section>
+
+  <!-- Publications by Year -->
+  <section class="py-16">
+    <div class="container-main">
+      {years.map((year) => (
+        <div class="mb-12 last:mb-0">
+          <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-6">{year}</h2>
+          <div class="space-y-4">
+            {publications[year].map((pub) => (
+              <PublicationCard publication={pub} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Conference Proceedings -->
+  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+    <div class="container-main">
+      <h2 class="section-title mb-8">Conference Proceedings</h2>
+      <div class="space-y-4">
+        <PublicationCard publication={{
+          authors: "Vaibhav Sundriyal, Masha Sosonkina, Bryce M. Westheimer",
+          title: "Comparing Frequency Scaling Efficacy on Different Memory Technologies",
+          journal: "2019 Spring Simulation Conference (SpringSim)",
+          doi: "10.23919/SpringSim.2019.8732866"
+        }} />
+        <PublicationCard publication={{
+          authors: "Vaibhav Sundriyal, Masha Sosonkina, Bryce M. Westheimer, Mark S. Gordon",
+          title: "Comparisons of Core and Uncore Frequency Scaling Modes in Quantum Chemistry Application GAMESS",
+          journal: "2018 Spring Simulation Conference (HPC Track)",
+          doi: "10.1145/3200947.3200949"
+        }} />
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
