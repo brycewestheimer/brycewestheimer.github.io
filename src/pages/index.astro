@@ -8,25 +8,25 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const featuredProjects = [
   {
-    title: "GAMESS",
-    description: "Core contributor to GAMESS fragmentation development. Focus on MAP enablement and accelerator portability.",
-    techs: ["Fortran", "CUDA", "MPI"],
+    title: "autofragment",
+    description: "Automatic molecular fragmentation library for fragment-based quantum chemistry calculations. Generates fragment definitions from molecular structures.",
+    techs: ["Python", "Fragmentation", "QCSchema"],
     status: "Active" as const,
-    href: "https://www.msg.chem.iastate.edu/gamess/",
+    href: "https://brycewestheimer.github.io/autofragment-public",
   },
   {
-    title: "RCChem",
-    description: "A modular quantum chemistry package in Rust with DFT, integral transforms, and post-SCF methods.",
-    techs: ["Rust", "DFT", "HPC"],
-    status: "Development" as const,
-    github: "https://github.com/brycewestheimer/rcchem",
+    title: "LibAccInt",
+    description: "OpenMP and GPU accelerated integral calculations for quantum chemistry. Provides high-performance one- and two-electron integral evaluation.",
+    techs: ["C++", "OpenMP", "CUDA"],
+    status: "Active" as const,
+    href: "https://brycewestheimer.github.io/libaccint-public",
   },
   {
-    title: "Equivariant GNNs",
-    description: "Graph neural networks with equivariant residual connections for molecular property prediction.",
-    techs: ["PyTorch", "PyG", "E(3)"],
-    status: "Development" as const,
-    github: "#",
+    title: "Distributed Template Library",
+    description: "STL-like ergonomics for distributed and heterogeneous computing, with bindings for C, Fortran, and Python to enable multi-language HPC workflows.",
+    techs: ["C++", "MPI", "HPC"],
+    status: "Active" as const,
+    href: "https://brycewestheimer.github.io/dtl-public",
   },
 ];
 ---
@@ -80,7 +80,7 @@ const featuredProjects = [
     </div>
   </section>
 
-  <!-- Latest Blog Preview (optional - placeholder) -->
+  <!-- Latest Blog Preview -->
   <section class="py-16 bg-surface-100 dark:bg-surface-900">
     <div class="container-main">
       <div class="text-center max-w-2xl mx-auto">

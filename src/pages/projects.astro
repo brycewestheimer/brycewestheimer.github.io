@@ -5,6 +5,31 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 
+// Highlighted Projects
+const highlightedProjects = [
+  {
+    title: "autofragment",
+    description: "Automatic molecular fragmentation library for fragment-based quantum chemistry calculations. Generates fragment definitions from molecular structures.",
+    techs: ["Python", "Fragmentation", "QCSchema"],
+    status: "Active" as const,
+    href: "https://brycewestheimer.github.io/autofragment-public"
+  },
+  {
+    title: "LibAccInt",
+    description: "OpenMP and GPU accelerated integral calculations for quantum chemistry. Provides high-performance one- and two-electron integral evaluation.",
+    techs: ["C++", "OpenMP", "CUDA"],
+    status: "Active" as const,
+    href: "https://brycewestheimer.github.io/libaccint-public"
+  },
+  {
+    title: "Distributed Template Library",
+    description: "STL-like ergonomics for distributed and heterogeneous computing, with bindings for C, Fortran, and Python to enable multi-language HPC workflows.",
+    techs: ["C++", "MPI", "HPC"],
+    status: "Active" as const,
+    href: "https://brycewestheimer.github.io/dtl-public"
+  }
+];
+
 // Open Source Contributions
 const openSourceProjects = [
   {
@@ -25,13 +50,6 @@ const openSourceProjects = [
 
 // Scientific Computing
 const scientificProjects = [
-  {
-    title: "autofragment",
-    description: "Automatic molecular fragmentation library for fragment-based quantum chemistry calculations. Generates fragment definitions from molecular structures.",
-    techs: ["Python", "Fragmentation", "QCSchema"],
-    status: "Active" as const,
-    github: "https://github.com/brycewestheimer/autofragment"
-  },
   {
     title: "RCChem",
     description: "A modular quantum chemistry package written in Rust, featuring DFT calculations, integral transforms, and post-SCF methods. Designed for performance and correctness.",
@@ -55,14 +73,14 @@ const aimlProjects = [
     description: "Graph neural network architecture with equivariant residual connections for molecular property prediction. Leverages geometric deep learning for chemical systems.",
     techs: ["PyTorch", "PyG", "E(3)-Equivariant"],
     status: "Development" as const,
-    github: "#" // Placeholder
+    github: "#"
   },
   {
     title: "Reference Anchored Residual NNs",
     description: "Neural network architecture using reference-anchored residual learning for improved transferability in molecular simulations and property prediction.",
     techs: ["PyTorch", "ML", "Chemistry"],
     status: "Development" as const,
-    github: "#" // Placeholder
+    github: "#"
   }
 ];
 
@@ -70,21 +88,21 @@ const aimlProjects = [
 const softwareProjects = [
   {
     title: "Personal Website",
-    description: "This portfolio website — built with Astro and Tailwind CSS. Features dark mode, responsive design, blog/tutorial content collections, and CI/CD deployment.",
+    description: "This portfolio website, built with Astro and Tailwind CSS. Features dark mode, responsive design, blog/tutorial content collections, and CI/CD deployment.",
     techs: ["Astro", "Tailwind CSS", "GitHub Actions"],
     status: "Active" as const,
     github: "https://github.com/brycewestheimer/brycewestheimer.github.io"
   }
 ];
 
-// Data Analysis (Placeholder)
+// Data Analysis
 const dataProjects = [
   {
     title: "Coming Soon",
     description: "Data analysis and visualization project currently in development. Check back for updates on interactive dashboards and scientific data tools.",
     techs: ["Python", "Visualization"],
     status: "Planned" as const,
-    github: "#" // Placeholder
+    github: "#"
   }
 ];
 ---
@@ -98,8 +116,27 @@ const dataProjects = [
       <h1 class="text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">Projects</h1>
       <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
         A showcase of work spanning scientific computing, AI/ML, open source contributions, 
-        and software engineering — from research prototypes to production-ready tools.
+        and software engineering - from research prototypes to production-ready tools.
       </p>
+    </div>
+  </section>
+
+  <!-- Highlighted Projects -->
+  <section class="py-16">
+    <div class="container-main">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900 flex items-center justify-center">
+          <svg class="w-5 h-5 text-accent-600 dark:text-accent-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h2 class="section-title">Highlighted Projects</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {highlightedProjects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
     </div>
   </section>
 

@@ -27,3 +27,6 @@ pnpm-debug.log*
 TODO.md
 handoff.md
 implementation_plan*.md
+
+# Local artifacts
+tutorial_or_blog_post.md

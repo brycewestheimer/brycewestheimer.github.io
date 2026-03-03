@@ -3,9 +3,171 @@ import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const experience = [
+  {
+    period: "2024 - Present",
+    title: "Postdoctoral Fellow",
+    org: "University of Colorado Denver",
+    detail: "Co-advised by Professors Emilie Guidez and Hai Lin. Leading method development for multi-layer adaptive partitioning (MAP) and accelerator-aware electronic structure workflows."
+  },
+  {
+    period: "2022 - 2024",
+    title: "Postdoctoral Research Associate",
+    org: "Ames National Laboratory",
+    detail: "Advanced extreme-scale GAMESS development for heterogeneous supercomputing architectures."
+  },
+  {
+    period: "2015 - 2022",
+    title: "Graduate Research Assistant",
+    org: "Gordon Group, Iowa State University",
+    detail: "Developed treatments of interfragment covalent bonds, scalable non-orthogonal MO expansions, and contributed to GAMESS."
+  },
+  {
+    period: "2014 - 2015",
+    title: "Undergraduate Researcher",
+    org: "Prody Lab, Western Washington University",
+    detail: "Built computational pipelines for structural biology and spectroscopy projects."
+  }
+];
+
+const education = [
+  {
+    year: "2022",
+    degree: "Ph.D., Physical Chemistry",
+    institution: "Iowa State University",
+    detail: "Dissertation: Developments in fragment-based quantum chemistry: Flattening the curve (advisor: Mark S. Gordon)"
+  },
+  {
+    year: "2015",
+    degree: "B.S., Chemistry",
+    institution: "Western Washington University"
+  },
+  {
+    year: "2012",
+    degree: "A.S., Chemistry",
+    institution: "Clark College"
+  }
+];
+
+const publications = [
+  {
+    authors: "Peng Xu, Bryce M. Westheimer, Megan Schlinsog, et al.",
+    title: "The Effective Fragment Potential: An Ab Initio Force Field",
+    journal: "Comprehensive Computational Chemistry (Elsevier), 2024",
+    doi: "10.1016/B978-0-12-821978-2.00141-0"
+  },
+  {
+    authors: "Jorge L. Galvez Vallejo, Calum Snowdon, Ryan Stocks, ... Bryce M. Westheimer, et al.",
+    title: "Toward an extreme-scale electronic structure system",
+    journal: "The Journal of Chemical Physics, 159(4), 044112, 2023",
+    doi: "10.1063/5.0156399"
+  },
+  {
+    authors: "Federico Zahariev, Peng Xu, Bryce M. Westheimer, et al.",
+    title: "The General Atomic and Molecular Electronic Structure System (GAMESS): Novel Methods on Novel Architectures",
+    journal: "Journal of Chemical Theory and Computation, 19(20), 7031-7055, 2023",
+    doi: "10.1021/acs.jctc.3c00379"
+  },
+  {
+    authors: "Bryce M. Westheimer, Mark S. Gordon",
+    title: "General, Rigorous Approach for the Treatment of Interfragment Covalent Bonds",
+    journal: "The Journal of Physical Chemistry A, 126(39), 6995-7006, 2022",
+    doi: "10.1021/acs.jpca.2c04015"
+  },
+  {
+    authors: "Bryce M. Westheimer, Mark S. Gordon",
+    title: "Scalable ab initio fragmentation methods based on a truncated expansion of the non-orthogonal molecular orbital model",
+    journal: "The Journal of Chemical Physics, 155(15), 154101, 2021",
+    doi: "10.1063/5.0064864"
+  },
+  {
+    authors: "Giuseppe M. J. Barca, Colleen Bertoni, ... Bryce M. Westheimer, et al.",
+    title: "Recent developments in the general atomic and molecular electronic structure system",
+    journal: "The Journal of Chemical Physics, 152(15), 154102, 2020",
+    doi: "10.1063/5.0005188"
+  },
+  {
+    authors: "Mark S. Gordon, Giuseppe M. J. Barca, ... Bryce Westheimer",
+    title: "Novel Computer Architectures and Quantum Chemistry",
+    journal: "The Journal of Physical Chemistry A, 124(23), 4557-4582, 2020",
+    doi: "10.1021/acs.jpca.0c02249"
+  }
+];
+
+const conferenceProceedings = [
+  {
+    authors: "Vaibhav Sundriyal, Masha Sosonkina, Bryce M. Westheimer",
+    title: "Comparing Frequency Scaling Efficacy on Different Memory Technologies",
+    journal: "2019 Spring Simulation Conference (SpringSim)",
+    doi: "10.23919/SpringSim.2019.8732866"
+  },
+  {
+    authors: "Vaibhav Sundriyal, Masha Sosonkina, Bryce M. Westheimer, Mark S. Gordon",
+    title: "Comparisons of Core and Uncore Frequency Scaling Modes in Quantum Chemistry Application GAMESS",
+    journal: "2018 Spring Simulation Conference (HPC Track)",
+    doi: "10.1145/3200947.3200949"
+  }
+];
+
+const presentations = [
+  {
+    type: "Invited Talk",
+    title: "Subsystem-local resolution of the identity: Novel methods for exchange repulsion effects in intermolecular interaction methods",
+    venue: "ACS Fall 2024, PHYS Division, San Francisco, CA",
+    date: "August 2024"
+  },
+  {
+    type: "Session Presider",
+    title: "Addressing the Complexity of Correlated Quantum Many-Body Problems by Embedding & Downfolding",
+    venue: "ACS Fall 2024 Symposium",
+    date: "August 2024"
+  }
+];
+
+const awards = [
+  "Molecular Sciences Software Institute (MolSSI) Software Fellowship (2020-2021)",
+  "Klaus Ruedenberg Theoretical Chemistry Award, Iowa State University",
+  "Witiak Graduate Research Fellowship, Iowa State University",
+  "Alpha Chi Sigma Research Award, Iowa State University",
+  "Research and Creative Opportunities Award"
+];
+
+const softwareProjects = [
+  {
+    name: "autofragment",
+    description: "Automatic molecular fragmentation for fragment-based quantum chemistry",
+    href: "https://brycewestheimer.github.io/autofragment-public"
+  },
+  {
+    name: "LibAccInt",
+    description: "OpenMP and GPU accelerated integral calculations for quantum chemistry",
+    href: "https://brycewestheimer.github.io/libaccint-public"
+  },
+  {
+    name: "Distributed Template Library",
+    description: "STL-like ergonomics for distributed and heterogeneous computing",
+    href: "https://brycewestheimer.github.io/dtl-public"
+  },
+  {
+    name: "GAMESS",
+    description: "General Atomic and Molecular Electronic Structure System",
+    href: "https://www.msg.chem.iastate.edu/gamess/"
+  },
+  {
+    name: "RCChem",
+    description: "Modular quantum chemistry package in Rust",
+    href: "https://github.com/brycewestheimer/rcchem"
+  },
+  {
+    name: "QCManyBody",
+    description: "Extended many-body expansion library (MolSSI fork)",
+    href: "https://github.com/brycewestheimer/QCManyBody"
+  }
+];
 ---
 
-<BaseLayout title="CV" description="Curriculum Vitae and professional background">
+<BaseLayout title="CV" description="Curriculum Vitae - Bryce M. Westheimer, PhD">
   <Header slot="header" />
 
   <!-- Page Header -->
@@ -17,82 +179,206 @@ import Footer from '../components/Footer.astro';
           Open to Opportunities
         </span>
       </div>
-      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl">
-        I'm actively seeking positions in industry, national laboratories, and academia. 
-        Download my complete CV or browse key highlights below.
+      <p class="text-xl text-surface-600 dark:text-surface-400 max-w-3xl mb-6">
+        Bryce M. Westheimer, PhD - Scientific software developer and researcher 
+        specializing in computational chemistry and high-performance computing.
       </p>
+      <button
+        onclick="window.print()"
+        class="btn btn-secondary print:hidden"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        Print / Save as PDF
+      </button>
     </div>
   </section>
 
-  <!-- Download Section -->
-  <section class="py-16">
+  <!-- Education -->
+  <section class="py-12 cv-section">
     <div class="container-main">
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="card p-8">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
-            <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+      <h2 class="section-title mb-6">Education</h2>
+      <div class="space-y-4">
+        {education.map((edu) => (
+          <div class="card">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+              <span class="text-sm font-mono text-primary-600 dark:text-primary-400 sm:w-16 flex-shrink-0">{edu.year}</span>
+              <div>
+                <h3 class="font-semibold text-surface-900 dark:text-surface-100">{edu.degree}</h3>
+                <p class="text-surface-600 dark:text-surface-400">{edu.institution}</p>
+                {edu.detail && (
+                  <p class="text-sm text-surface-500 dark:text-surface-500 mt-1 italic">{edu.detail}</p>
+                )}
+              </div>
+            </div>
           </div>
-          <h2 class="text-2xl font-bold text-surface-900 dark:text-surface-100 mb-4">
-            Download CV
-          </h2>
-          <p class="text-surface-600 dark:text-surface-400 mb-6">
-            Get my complete curriculum vitae with detailed experience, publications, and skills.
-          </p>
-          <a 
-            href="/cv.pdf" 
-            download
-            class="btn btn-primary"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            Download PDF
-          </a>
-          <p class="text-sm text-surface-500 mt-4">
-            PDF coming soon. For now, please <a href="/contact" class="text-primary-600 hover:underline dark:text-primary-400">contact me</a> to request a copy.
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Quick Overview -->
-  <section class="py-16 bg-surface-100 dark:bg-surface-900">
+  <!-- Experience -->
+  <section class="py-12 bg-surface-100 dark:bg-surface-900 cv-section">
     <div class="container-main">
-      <h2 class="section-title mb-8 text-center">Quick Overview</h2>
-      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        <div class="card text-center">
-          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">10+</div>
-          <p class="text-surface-600 dark:text-surface-400">Publications</p>
-        </div>
-        <div class="card text-center">
-          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">8+</div>
-          <p class="text-surface-600 dark:text-surface-400">Years Experience</p>
-        </div>
-        <div class="card text-center">
-          <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">5+</div>
-          <p class="text-surface-600 dark:text-surface-400">Awards & Fellowships</p>
-        </div>
+      <h2 class="section-title mb-6">Experience</h2>
+      <div class="space-y-4">
+        {experience.map((exp) => (
+          <div class="card">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+              <span class="text-sm font-mono text-primary-600 dark:text-primary-400 sm:w-32 flex-shrink-0">{exp.period}</span>
+              <div>
+                <h3 class="font-semibold text-surface-900 dark:text-surface-100">{exp.title}</h3>
+                <p class="text-surface-600 dark:text-surface-400">{exp.org}</p>
+                <p class="text-sm text-surface-500 mt-1">{exp.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="py-12 cv-section">
+    <div class="container-main">
+      <h2 class="section-title mb-6">Publications</h2>
+      <div class="space-y-4">
+        {publications.map((pub, i) => (
+          <div class="card">
+            <div class="flex items-start gap-3">
+              <span class="text-sm font-mono text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0">{publications.length - i}.</span>
+              <div>
+                <p class="text-sm text-surface-600 dark:text-surface-400">{pub.authors}</p>
+                <h3 class="font-semibold text-surface-900 dark:text-surface-100 mt-1">{pub.title}</h3>
+                <p class="text-sm text-surface-500 italic mt-1">{pub.journal}</p>
+                {pub.doi && (
+                  <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" class="text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 mt-1 inline-block">
+                    DOI: {pub.doi}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-lg font-semibold text-surface-900 dark:text-surface-100 mt-8 mb-4">Conference Proceedings</h3>
+      <div class="space-y-4">
+        {conferenceProceedings.map((pub) => (
+          <div class="card">
+            <div>
+              <p class="text-sm text-surface-600 dark:text-surface-400">{pub.authors}</p>
+              <h4 class="font-semibold text-surface-900 dark:text-surface-100 mt-1">{pub.title}</h4>
+              <p class="text-sm text-surface-500 italic mt-1">{pub.journal}</p>
+              {pub.doi && (
+                <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" class="text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 mt-1 inline-block">
+                  DOI: {pub.doi}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Presentations -->
+  <section class="py-12 bg-surface-100 dark:bg-surface-900 cv-section">
+    <div class="container-main">
+      <h2 class="section-title mb-6">Selected Presentations</h2>
+      <div class="space-y-4">
+        {presentations.map((pres) => (
+          <div class="card">
+            <div class="flex items-start gap-3">
+              <span class={`tag ${pres.type === 'Invited Talk' ? 'badge-active' : 'badge-preview'}`}>{pres.type}</span>
+              <div>
+                <h3 class="font-semibold text-surface-900 dark:text-surface-100">{pres.title}</h3>
+                <p class="text-sm text-surface-600 dark:text-surface-400 mt-1">{pres.venue}</p>
+                <p class="text-sm text-surface-500 mt-1">{pres.date}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="py-12 cv-section">
+    <div class="container-main">
+      <h2 class="section-title mb-6">Awards & Fellowships</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {awards.map((award) => (
+          <div class="card flex items-center gap-3">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent-600 dark:text-accent-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-surface-700 dark:text-surface-300">{award}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Software Projects -->
+  <section class="py-12 bg-surface-100 dark:bg-surface-900 cv-section">
+    <div class="container-main">
+      <h2 class="section-title mb-6">Software Projects</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {softwareProjects.map((proj) => (
+          <a href={proj.href} class="card group block hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+            <h3 class="font-semibold text-surface-900 dark:text-surface-100 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">{proj.name}</h3>
+            <p class="text-sm text-surface-600 dark:text-surface-400 mt-1">{proj.description}</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Links -->
-  <section class="py-16">
+  <section class="py-12 cv-section print:hidden">
     <div class="container-main text-center">
       <h2 class="section-title mb-6">More Information</h2>
-      <p class="text-surface-600 dark:text-surface-400 mb-8 max-w-xl mx-auto">
-        For detailed information about my background, please explore these pages:
-      </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="/about" class="btn btn-secondary">About Me</a>
         <a href="/publications" class="btn btn-secondary">Publications</a>
         <a href="/projects" class="btn btn-secondary">Projects</a>
+        <a href="/contact" class="btn btn-secondary">Contact</a>
       </div>
     </div>
   </section>
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  @media print {
+    /* Clean print layout */
+    :global(header), :global(footer), .print\:hidden {
+      display: none !important;
+    }
+    
+    section {
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+      background: white !important;
+      break-inside: avoid;
+    }
+
+    .card {
+      box-shadow: none !important;
+      border: 1px solid #e5e7eb !important;
+      padding: 0.5rem 0.75rem !important;
+    }
+
+    h1 { font-size: 1.5rem !important; }
+    h2 { font-size: 1.125rem !important; }
+    
+    :global(body) {
+      font-size: 11pt !important;
+    }
+  }
+</style>
