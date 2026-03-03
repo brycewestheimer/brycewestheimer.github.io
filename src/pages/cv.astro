@@ -190,8 +190,29 @@ const softwareProjects = [
     </div>
   </section>
 
-  <!-- Education -->
+  <!-- Experience -->
   <section class="py-12 cv-section">
+    <div class="container-main">
+      <h2 class="section-title mb-6">Experience</h2>
+      <div class="space-y-4">
+        {experience.map((exp) => (
+          <div class="card">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+              <span class="text-sm font-mono text-primary-600 dark:text-primary-400 sm:w-32 flex-shrink-0">{exp.period}</span>
+              <div>
+                <h3 class="font-semibold text-surface-900 dark:text-surface-100">{exp.title}</h3>
+                <p class="text-surface-600 dark:text-surface-400">{exp.org}</p>
+                <p class="text-sm text-surface-500 mt-1">{exp.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="py-12 bg-surface-100 dark:bg-surface-900 cv-section">
     <div class="container-main">
       <h2 class="section-title mb-6">Education</h2>
       <div class="space-y-4">
@@ -205,27 +226,6 @@ const softwareProjects = [
                 {edu.detail && (
                   <p class="text-sm text-surface-500 dark:text-surface-500 mt-1 italic">{edu.detail}</p>
                 )}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section class="py-12 bg-surface-100 dark:bg-surface-900 cv-section">
-    <div class="container-main">
-      <h2 class="section-title mb-6">Experience</h2>
-      <div class="space-y-4">
-        {experience.map((exp) => (
-          <div class="card">
-            <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-              <span class="text-sm font-mono text-primary-600 dark:text-primary-400 sm:w-32 flex-shrink-0">{exp.period}</span>
-              <div>
-                <h3 class="font-semibold text-surface-900 dark:text-surface-100">{exp.title}</h3>
-                <p class="text-surface-600 dark:text-surface-400">{exp.org}</p>
-                <p class="text-sm text-surface-500 mt-1">{exp.detail}</p>
               </div>
             </div>
           </div>
