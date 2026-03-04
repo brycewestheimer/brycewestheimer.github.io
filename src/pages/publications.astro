@@ -82,7 +82,14 @@ const publications = {
   ]
 };
 
-const years = Object.keys(publications).sort((a, b) => parseInt(b) - parseInt(a));
+const years = Object.keys(publications).sort((a, b) => {
+  const aNum = parseInt(a);
+  const bNum = parseInt(b);
+  if (isNaN(aNum) && isNaN(bNum)) return 0;
+  if (isNaN(aNum)) return -1;
+  if (isNaN(bNum)) return 1;
+  return bNum - aNum;
+});
 ---
 
 <BaseLayout title="Publications" description="Peer-reviewed publications and research contributions">
