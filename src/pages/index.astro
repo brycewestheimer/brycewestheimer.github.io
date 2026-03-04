@@ -5,6 +5,20 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestPost = allPosts.length > 0 ? allPosts[0] : null;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
 
 const featuredProjects = [
   {
@@ -83,16 +97,56 @@ const featuredProjects = [
   <!-- Latest Blog Preview -->
   <section class="py-16 bg-surface-100 dark:bg-surface-900">
     <div class="container-main">
-      <div class="text-center max-w-2xl mx-auto">
-        <h2 class="section-title">Latest Insights</h2>
-        <p class="text-surface-600 dark:text-surface-400 mb-8">
-          Technical articles on computational chemistry, software development, and scientific computing
-        </p>
-        <a href="/blog" class="btn btn-primary">
-          Browse Articles
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="section-title">Latest Insights</h2>
+          <p class="text-surface-600 dark:text-surface-400">
+            Technical articles on computational chemistry, software development, and scientific computing
+          </p>
+        </div>
+        <a 
+          href="/blog" 
+          class="hidden sm:flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+        >
+          View all articles
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
+        </a>
+      </div>
+
+      {latestPost ? (
+        <a href={`/blog/${latestPost.slug}`} class="card group block max-w-3xl">
+          <div class="flex items-center gap-2 mb-2">
+            <time class="text-sm text-surface-500" datetime={latestPost.data.date.toISOString()}>
+              {formatDate(latestPost.data.date)}
+            </time>
+          </div>
+          <h3 class="text-xl font-semibold text-surface-900 dark:text-surface-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+            {latestPost.data.title}
+          </h3>
+          {latestPost.data.description && (
+            <p class="text-surface-600 dark:text-surface-400 mb-4">
+              {latestPost.data.description}
+            </p>
+          )}
+          {latestPost.data.tags && latestPost.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {latestPost.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </a>
+      ) : (
+        <p class="text-surface-600 dark:text-surface-400 text-center py-12">
+          No posts yet. Check back soon!
+        </p>
+      )}
+
+      <div class="sm:hidden mt-6 text-center">
+        <a href="/blog" class="btn btn-secondary">
+          View all articles
         </a>
       </div>
     </div>
