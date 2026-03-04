@@ -2,10 +2,10 @@
 title: "Generating GAMESS FMO Inputs with autofragment"
 description: "A hands-on tutorial for partitioning molecular systems and generating GAMESS FMO input files using the autofragment Python library."
 date: 2026-03-04
+level: "advanced"
 tags: ["autofragment", "GAMESS", "FMO", "quantum chemistry", "tutorial", "Python"]
 ---
 
-# Generating GAMESS FMO Inputs with autofragment
 
 Fragment molecular orbital (FMO) calculations require the input system to be pre-partitioned into fragments, with each atom assigned to exactly one fragment. Each fragment needs a charge and spin multiplicity. For a water cluster this is trivial. For a 300-residue protein with crystallographic waters, ions, and ligands, doing it by hand is tedious and error-prone. autofragment automates this entire pipeline: read a structure file, partition it into chemically sensible fragments, and write a ready-to-run GAMESS input file.
 
@@ -502,3 +502,10 @@ The JSON archive lets you regenerate GAMESS inputs with different basis sets or 
 | Save JSON | `tree.to_json("f.json")` | (default output format) |
 | Load JSON | `FragmentTree.from_json("f.json")` | (use Python API) |
 | Check features | `af.has_feature("bio")` / `af.list_features()` | `autofragment info` |
+
+## Next Steps
+
+- Read the [fragment-based methods overview](/blog/fragment-based-quantum-chemistry/) for the theoretical background behind MBE, FMO, and embedded methods.
+- Browse the [autofragment documentation](https://brycewestheimer.github.io/autofragment-public) for the full API reference and additional examples.
+- See the [GAMESS documentation](https://www.msg.chem.iastate.edu/gamess/documentation.html) for details on FMO keywords, PIEDA output, and analytic gradients.
+- For questions or contributions, visit the [autofragment GitHub repository](https://github.com/brycewestheimer/autofragment).
