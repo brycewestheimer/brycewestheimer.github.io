@@ -6,7 +6,12 @@ import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const tutorials = (await getCollection('tutorials'))
-  .filter(t => !t.data.draft);
+  .filter(t => !t.data.draft)
+  .sort((a, b) => {
+    const dateA = a.data.date ? a.data.date.valueOf() : 0;
+    const dateB = b.data.date ? b.data.date.valueOf() : 0;
+    return dateA - dateB;
+  });
 
 const levelColors = {
   beginner: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
