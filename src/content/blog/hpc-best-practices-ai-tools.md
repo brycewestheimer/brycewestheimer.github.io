@@ -130,25 +130,27 @@ This is where the current generation of AI tools needs the most guidance. They a
 
 ### What AI tools get right by default
 
-Build system configuration. CMake boilerplate, dependency detection, compiler flag selection. These are well-represented in training data and follow predictable patterns. Let the tool write your `CMakeLists.txt` and your CI pipeline.
+- **Build system configuration.** CMake boilerplate, dependency detection, compiler flag selection. These are well-represented in training data and follow predictable patterns. Let the tool write your `CMakeLists.txt` and your CI pipeline.
 
-Test scaffolding. GoogleTest fixtures, pytest parametrization, CTest integration. The structure of a test is the same whether you are testing a web endpoint or a linear algebra kernel. The tool can generate the harness while you focus on the assertions.
+- **Test scaffolding.** GoogleTest fixtures, pytest parametrization, CTest integration. The structure of a test is the same whether you are testing a web endpoint or a linear algebra kernel. The tool can generate the harness while you focus on the assertions.
 
-Boilerplate refactoring. Renaming variables, extracting functions, converting between equivalent representations. These are mechanical transformations that the tool handles reliably.
+- **Boilerplate refactoring.** Renaming variables, extracting functions, converting between equivalent representations. These are mechanical transformations that the tool handles reliably.
 
-Documentation and comments. Explaining what existing code does is something AI tools do well. Generating docstrings, writing usage examples, and annotating tricky sections. This frees you to write the code that needs careful thought rather than the prose around it.
+- **Documentation and comments.** Explaining what existing code does is something AI tools do well. Generating docstrings, writing usage examples, and annotating tricky sections. This frees you to write the code that needs careful thought rather than the prose around it.
 
 ### The web-dev gravity well
 
-Left to its defaults, an AI coding assistant will write code that looks like a web application backend. This is not a criticism of the tool. It is a reflection of the training distribution. Web-dev patterns are overwhelmingly the most common in public code.
+Left to its defaults, an AI coding assistant will write code that looks like a web application backend. This is not a criticism of the tool — it is a reflection of the training distribution. Web-dev patterns are overwhelmingly the most common in public code.
 
-Heap allocation per operation. A web request handler that allocates a response object, fills it, and returns it is fine when the handler runs once per network round trip. A stencil update that allocates a temporary vector per grid cell per timestep will spend more time in `malloc` than in arithmetic.
+Common patterns that work in web development but hurt HPC performance:
 
-Virtual dispatch everywhere. Polymorphism through base class pointers is the default OOP pattern. It is appropriate for plugin systems and event handlers. It is inappropriate for inner loops that execute billions of times, where the vtable lookup and indirect branch prediction miss add up.
+- **Heap allocation per operation.** A web request handler that allocates a response object, fills it, and returns it is fine when the handler runs once per network round trip. A stencil update that allocates a temporary vector per grid cell per timestep will spend more time in `malloc` than in arithmetic.
 
-`std::map` where flat arrays suffice. If your keys are dense integers from 0 to N, use a vector. If your keys are sparse but you look them up in a hot loop, use a sorted vector with binary search or a flat hash map.
+- **Virtual dispatch everywhere.** Polymorphism through base class pointers is the default OOP pattern. It is appropriate for plugin systems and event handlers. It is inappropriate for inner loops that execute billions of times, where the vtable lookup and indirect branch prediction miss add up.
 
-`std::shared_ptr` where ownership is clear. In scientific code, data ownership is almost always unambiguous. The simulation owns the grid. The solver owns its workspace. Shared ownership is rare, and the atomic reference counting in `shared_ptr` is wasted cost.
+- **`std::map` where flat arrays suffice.** If your keys are dense integers from 0 to N, use a vector. If your keys are sparse but you look them up in a hot loop, use a sorted vector with binary search or a flat hash map.
+
+- **`std::shared_ptr` where ownership is clear.** In scientific code, data ownership is almost always unambiguous. The simulation owns the grid. The solver owns its workspace. Shared ownership is rare, and the atomic reference counting in `shared_ptr` is wasted cost.
 
 ### Non-performant patterns AI produces for HPC
 

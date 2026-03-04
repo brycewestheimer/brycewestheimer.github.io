@@ -87,11 +87,14 @@ const levelColors = {
 </BaseLayout>
 
 <style>
+  /* Prose customizations for better spacing */
   .prose pre {
     background-color: var(--color-surface-900);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
     overflow-x: auto;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
   }
   
   .dark .prose pre {
@@ -113,5 +116,61 @@ const levelColors = {
   .prose pre code {
     background-color: transparent;
     padding: 0;
+  }
+
+  /* Heading spacing */
+  .prose h2 {
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+    padding-top: 0.5em;
+    border-top: 1px solid var(--color-surface-200);
+  }
+
+  .prose h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .dark .prose h2 {
+    border-top-color: var(--color-surface-700);
+  }
+
+  .prose h3 {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Paragraph spacing */
+  .prose p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  /* List spacing */
+  .prose ul, .prose ol {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  .prose li {
+    margin-top: 0.375em;
+    margin-bottom: 0.375em;
+  }
+
+  /* Table spacing */
+  .prose table {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  .prose th, .prose td {
+    padding: 0.75em 1em;
+  }
+
+  /* Blockquote spacing */
+  .prose blockquote {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
   }
 </style>

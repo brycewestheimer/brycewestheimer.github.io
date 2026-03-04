@@ -15,11 +15,17 @@ This post examines the techniques that make GPU-accelerated integral evaluation 
 
 A two-electron integral batch is defined by four shells with angular momenta (L_a, L_b, L_c, L_d). Each shell of angular momentum L contains (L+1)(L+2)/2 Cartesian basis functions. The number of integrals per shell quartet is the product of functions across all four shells.
 
-An (ss|ss) quartet (all L=0) produces exactly 1 integral. An (ff|ff) quartet (all L=3) produces 10^4 = 10,000 integrals. An (gg|gg) quartet (all L=4) produces 15^4 = 50,625 integrals. The computational cost per quartet varies even more steeply, because higher angular momentum requires more intermediate recurrence steps and more primitive Gaussian contractions.
+The size variation is enormous:
+
+- An **(ss|ss)** quartet (all L=0) produces exactly **1 integral**
+- An **(ff|ff)** quartet (all L=3) produces **10,000 integrals**
+- An **(gg|gg)** quartet (all L=4) produces **50,625 integrals**
+
+The computational cost per quartet varies even more steeply, because higher angular momentum requires more intermediate recurrence steps and more primitive Gaussian contractions.
 
 This irregularity is what makes GPUs hard to use here. GPU kernels achieve peak throughput when every thread in a warp executes the same instruction on data of the same shape. A kernel that mixes (ss|ss) and (ff|ff) quartets wastes threads on padding, branches on angular-momentum-dependent code paths, and underutilizes registers allocated for the worst case.
 
-Contrast this with dense linear algebra. A matrix multiplication operates on uniformly shaped tiles. Each thread block handles the same amount of work. Load balancing is trivial. ERI evaluation does not have this property by default, and the first step toward GPU efficiency is to create it.
+Contrast this with dense linear algebra: a matrix multiplication operates on uniformly shaped tiles, each thread block handles the same amount of work, and load balancing is trivial. ERI evaluation does not have this property by default, and the first step toward GPU efficiency is to create it.
 
 ## ShellSet Batching: Grouping by Angular Momentum Class
 
@@ -65,7 +71,14 @@ enum class BackendHint {
 };
 ```
 
-The `DispatchConfig` controls thresholds: `min_gpu_batch_size`, `min_gpu_primitives`, `high_am_threshold`, and an auto-tuning mode that profiles the first call and reuses the decision. Users pass a `BackendHint` to any compute call to override the automatic decision. The `Auto` default is correct for most workloads.
+The `DispatchConfig` controls several thresholds:
+
+- `min_gpu_batch_size` — minimum quartets before GPU dispatch is considered
+- `min_gpu_primitives` — minimum primitive count for GPU benefit
+- `high_am_threshold` — angular momentum above which GPU is strongly preferred
+- An auto-tuning mode that profiles the first call and reuses the decision
+
+Users pass a `BackendHint` to any compute call to override the automatic decision. The `Auto` default is correct for most workloads.
 
 ## The Consumer Pattern
 
@@ -91,7 +104,11 @@ auto J = fock_builder.get_coulomb_matrix();
 auto K = fock_builder.get_exchange_matrix();
 ```
 
-The `Engine::compute` method iterates over all ShellSetQuartets in the basis, computes each batch (on CPU or GPU as the dispatch policy dictates), and feeds the results to the consumer. The consumer interface is generic: any type with the correct `accumulate` signature can serve as a consumer, enabling custom reductions for density fitting, Coulomb metric assembly, or gradient contractions.
+The `Engine::compute` method iterates over all ShellSetQuartets in the basis, computes each batch (on CPU or GPU as the dispatch policy dictates), and feeds the results to the consumer. The consumer interface is generic: any type with the correct `accumulate` signature can serve as a consumer, enabling custom reductions for:
+
+- Density fitting coefficient assembly
+- Coulomb metric computation
+- Gradient contractions
 
 On the GPU path, a `GpuFockBuilder` keeps the J and K matrices in device memory and accumulates using atomic operations, eliminating per-batch device-to-host transfers. The density matrix is uploaded once, and the result matrices are downloaded once at the end.
 
@@ -166,12 +183,31 @@ Load balance efficiency is measured as the ratio of average per-device time to m
 
 ## Practical Considerations
 
-**Mixed precision.** Consumer-grade GPUs (RTX series) offer 2x higher throughput for single precision compared to double. For Coulomb integrals where the density matrix provides natural error damping, computing integrals in FP32 and accumulating in FP64 can double throughput with sub-microhartree impact on total energies. This is useful for initial SCF iterations where the density is far from converged.
+### Mixed precision
 
-**MPI distribution.** In a distributed-memory cluster, each MPI rank computes a subset of shell quartets and accumulates a local Fock matrix. A single all-reduce (summation) over the J and K matrices produces the global Fock matrix. Since J and K are O(N^2), the communication cost is small compared to the O(N^4) computation. Each rank can independently use multi-GPU dispatch within its node.
+Consumer-grade GPUs (RTX series) offer 2x higher throughput for single precision compared to double. For Coulomb integrals where the density matrix provides natural error damping, computing integrals in FP32 and accumulating in FP64 can double throughput with sub-microhartree impact on total energies. This is useful for initial SCF iterations where the density is far from converged.
 
-**Density fitting.** The resolution-of-the-identity (RI) approximation replaces four-center ERIs with products of two- and three-center integrals. The work unit shape changes (three-index tensors instead of four-index), but the same batching and dispatch principles apply. ShellSetTriplets group three-center integrals by AM class. Consumers accumulate into the RI coefficient matrices. GPU dispatch benefits from the larger per-integral workload at high AM.
+### MPI distribution
 
-**Profiling over kernel speed.** A common mistake is to focus on kernel optimization (faster recurrence, better register usage) while neglecting work organization. A perfectly tuned kernel processing a poorly organized workload (mixed AM classes, no screening, no consumer pattern) will be slower than a generic kernel processing well-organized batches. Measure dispatch overhead, screening pass rates, consumer accumulation time, and load balance before optimizing kernel internals.
+In a distributed-memory cluster, each MPI rank computes a subset of shell quartets and accumulates a local Fock matrix. A single all-reduce (summation) over the J and K matrices produces the global Fock matrix. Since J and K are O(N^2), the communication cost is small compared to the O(N^4) computation. Each rank can independently use multi-GPU dispatch within its node.
 
-None of these techniques are specific to any one integral library: ShellSet batching, adaptive dispatch, consumer-driven accumulation, pre-kernel screening, work-stealing across devices. They are the architectural decisions that determine whether a GPU-accelerated integral code achieves 10% or 90% of peak hardware throughput. The kernel matters, but the framework around it matters more.
+### Density fitting
+
+The resolution-of-the-identity (RI) approximation replaces four-center ERIs with products of two- and three-center integrals. The work unit shape changes (three-index tensors instead of four-index), but the same batching and dispatch principles apply:
+
+- ShellSetTriplets group three-center integrals by AM class
+- Consumers accumulate into the RI coefficient matrices
+- GPU dispatch benefits from the larger per-integral workload at high AM
+
+### Profiling over kernel speed
+
+A common mistake is to focus on kernel optimization (faster recurrence, better register usage) while neglecting work organization. A perfectly tuned kernel processing a poorly organized workload will be slower than a generic kernel processing well-organized batches. Before optimizing kernel internals, measure:
+
+- Dispatch overhead
+- Screening pass rates
+- Consumer accumulation time
+- Load balance across devices
+
+---
+
+None of these techniques are specific to any one integral library. ShellSet batching, adaptive dispatch, consumer-driven accumulation, pre-kernel screening, work-stealing across devices — these are the architectural decisions that determine whether a GPU-accelerated integral code achieves 10% or 90% of peak hardware throughput. The kernel matters, but the framework around it matters more.
