@@ -1,7 +1,7 @@
 ---
 title: "Generating GAMESS FMO Inputs with autofragment"
 description: "A hands-on tutorial for partitioning molecular systems and generating GAMESS FMO input files using the autofragment Python library."
-date: 2026-03-04
+date: 2026-01-02
 level: "advanced"
 tags: ["autofragment", "GAMESS", "FMO", "quantum chemistry", "tutorial", "Python"]
 ---

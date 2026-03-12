@@ -1,6 +1,6 @@
 ---
 title: "libaccint Tutorial: Building Hartree-Fock Programs in C++ and Python"
-date: 2026-03-05
+date: 2026-02-06
 description: "An end-to-end guide to molecular integral computation with libaccint: from molecule definition through a complete RHF SCF calculation, with side-by-side C++ and Python examples."
 level: "advanced"
 tags: ["libaccint", "quantum-chemistry", "hartree-fock", "tutorial", "molecular-integrals"]

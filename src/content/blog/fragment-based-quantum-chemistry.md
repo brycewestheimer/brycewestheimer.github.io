@@ -1,7 +1,7 @@
 ---
 title: "Fragment-Based Methods in Quantum Chemistry"
 description: "An overview of many-body expansion, fragment molecular orbital, and embedded methods for large-scale quantum chemistry calculations."
-date: 2026-03-04
+date: 2026-01-05
 tags: ["quantum chemistry", "computational chemistry", "fragmentation", "FMO", "many-body expansion"]
 ---
 

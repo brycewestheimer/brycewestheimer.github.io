@@ -1,6 +1,6 @@
 ---
 title: "Hello World"
-date: 2019-01-29
+date: 2025-12-01
 description: "Welcome to my blog! An introduction to who I am and what I'll be writing about."
 tags: ["personal", "introduction"]
 ---

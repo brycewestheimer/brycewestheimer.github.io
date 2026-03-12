@@ -1,5 +1,6 @@
 ---
 title: "Getting Started with GAMESS"
+date: 2025-12-05
 description: "A beginner's guide to running quantum chemistry calculations with GAMESS"
 level: "beginner"
 tags: ["GAMESS", "quantum chemistry", "tutorial"]

@@ -1,6 +1,6 @@
 ---
 title: "HPC Best Practices in the Age of AI Coding Assistants"
-date: 2026-03-06
+date: 2026-02-02
 description: "Hard-won lessons for scientific software development, and how to direct AI coding tools so they help rather than hurt performance."
 tags: ["hpc", "scientific-computing", "ai-tools", "performance", "mpi", "cpp", "fortran", "python"]
 ---

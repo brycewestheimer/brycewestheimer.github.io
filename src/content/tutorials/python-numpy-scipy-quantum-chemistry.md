@@ -1,5 +1,6 @@
 ---
 title: "Python for Quantum Chemistry: NumPy and SciPy Fundamentals"
+date: 2025-11-07
 description: "Learn how to use Python's scientific computing libraries for quantum chemistry calculations and data analysis"
 level: "intermediate"
 tags: ["Python", "NumPy", "SciPy", "computational-chemistry"]

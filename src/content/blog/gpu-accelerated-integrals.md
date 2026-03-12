@@ -1,6 +1,6 @@
 ---
 title: "GPU-Accelerated Molecular Integrals: Turning Irregular Work into Fast Computation"
-date: 2026-03-05
+date: 2026-03-02
 description: "How shell-set batching, adaptive dispatch, and consumer-driven accumulation make GPU acceleration practical for two-electron integral evaluation in quantum chemistry."
 tags: ["quantum-chemistry", "gpu", "hpc", "molecular-integrals", "libaccint"]
 ---
